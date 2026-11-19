@@ -26,4 +26,4 @@ https://github.com/txytwist/ai-dev-handoff/issues/1 （已读取完整正文，�
 见 [实际交接记录](../handoff/phase1-mvp.md)。
 
 ## Next action
-用户将 PR 与交接交给 ChatGPT审核，决定接受或返工；不自行合并。
+用户将 PR https://github.com/txytwist/ai-dev-handoff/pull/2 与交接交给 ChatGPT审核，决定接受或返工；不自行合并。

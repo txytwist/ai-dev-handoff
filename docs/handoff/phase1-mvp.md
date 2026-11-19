@@ -33,7 +33,7 @@ git diff --check
 这些结果仅适用于本交付静态材料；没有声称真实手机流程或生产测试通过。
 
 ## PR and paths
-PR 创建后补入；任务见上方相对链接，变更文件与提交以 PR 为准。
+https://github.com/txytwist/ai-dev-handoff/pull/2 （base: main）；任务见上方相对链接，变更文件与最终提交以 PR 为准。首个实现提交 `cdc4f5f`；后续交接补链已重新运行相同检查。
 
 ## Limitations
 iPhone UI、账户功能、外部链接和真实跨工具端到端流程未实测。离线检查不校验锚点，不穷尽秘密；人工仍需复核。没有选择许可证，没有添加可选 Skill，基础流程不依赖插件。未合并、未部署、未发布。
