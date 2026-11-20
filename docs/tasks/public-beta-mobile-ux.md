@@ -19,4 +19,4 @@ https://github.com/txytwist/ai-dev-handoff/issues/7 （完整正文与评论已�
 见 [交接](../handoff/public-beta-mobile-ux.md)。
 
 ## Next action
-提交后REVIEW，用户主动返回ChatGPT审核；未批准合并。
+PR https://github.com/txytwist/ai-dev-handoff/pull/8 ，状态REVIEW，用户主动返回ChatGPT审核；未批准合并。

@@ -45,10 +45,12 @@ node scripts/check_mobile.mjs /tmp/ai-dev-handoff-mermaid /usr/bin/chromium /tmp
 
 两图均由真实Mermaid解析/渲染器生成，图1有效字约16px。已人工查看320px的中英文README和图2截图；其余宽度以脚本测量为证据，不声称逐台实机走查。截图/JSON未提交，可通过脚本再生成。
 
-匿名公开读取与远端Actions待推送/PR后核对，结果以PR对应head为准。
+匿名读取实际验证：Python urllib.request 不带 Authorization/Cookie，请求 raw.githubusercontent.com 上本分支实现提交 `686ae9b` 的 README.md、README.zh-CN.md、docs/portable-starter.md，三者均 HTTP 200 且包含 Public Beta。仅证明公开文件可获取，不是匿名手机界面或复制操作实测。
+
+远端Actions以PR对应head的实际documentation检查为准，不能用本地模拟替代。
 
 ## PR and paths
-PR创建后补回。主要指南位于根README/START_HERE/CHATGPT_SETUP及docs；模拟复现见 [mobile-simulation](../mobile-simulation.md)，实机待办见 [检查单](../mobile-acceptance.md)。
+PR https://github.com/txytwist/ai-dev-handoff/pull/8 。主要指南位于根README/START_HERE/CHATGPT_SETUP及docs；模拟复现见 [mobile-simulation](../mobile-simulation.md)，实机待办见 [检查单](../mobile-acceptance.md)。
 
 ## Limitations
 模拟使用marked GFM与简化CSS，不是GitHub生产CSS；Chromium不是Safari或GitHub App。字形、字体、复制功能、实际GitHub图形版本与界面仍需真实iPhone检查，NOT_RUN保持不变。历史审计中的私有状态与旧测试数是当时快照，不按当前状态改写。
