@@ -4,7 +4,7 @@
 
 ## 入口与私有阶段
 
-首次使用直接复制 [自包含完整引导](docs/portable-starter.md)，读不到框架时由所有者在授权范围内提供全文。下方指令适合已取得引导或已接入的项目。公共候选 URL 是 https://github.com/txytwist/ai-dev-handoff ，当前 Private、未发布；公开后仍要验证 README/指令实际可读，不能仅凭 URL 假称已加载。
+首次使用直接复制 [自包含完整引导](docs/portable-starter.md)，读不到框架时由所有者在授权范围内提供全文。下方指令适合已取得引导或已接入的项目。公共候选 URL 是 https://github.com/txytwist/ai-dev-handoff ，最近核实（2026-11-20）仍为 Private；所有者改为 Public 后为公开测试版，许可继续待定，仍要验证 README/指令实际可读，不能仅凭 URL 假称已加载。
 
 ## 可复制初始化
 

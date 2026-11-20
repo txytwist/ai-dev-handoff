@@ -20,3 +20,10 @@ with tempfile.TemporaryDirectory() as folder:
     for expected in ['missing: SECURITY.md', 'missing: .github/workflows/docs.yml', 'broken/escaping link', 'missing field Evidence', 'possible GitHub token']:
         assert any(expected in error for error in errors), expected
 print('PASS: clean fixture accepted; missing file/workflow, broken link, missing field and synthetic token rejected; temporary fixture removed.')
+
+from privacy_audit import findings
+assert 'GitHub token' in findings(('ghp_' + 'B' * 30).encode())
+assert 'email in file' in findings(('tester' + '@' + 'example.invalid').encode())
+assert findings(b'\xff\xfe') is None
+assert findings(b'ordinary documentation') == []
+print('PASS: privacy scanner detects synthetic token/email; flags non-UTF8 as unscanned; accepts ordinary text.')
