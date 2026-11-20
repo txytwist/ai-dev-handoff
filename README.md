@@ -4,7 +4,7 @@ Build software from your phone with ChatGPT, GitHub and Cloud Codex.
 
 Mobile-First · Beginner-Friendly · Human-in-the-Loop · GitHub-Native
 
-**Private internal preview; not publicly released or licensed open source.**
+**Public Beta preparation.** Private at the last verified check (2026-11-20). After the owner changes visibility, this becomes a publicly readable beta; check the live GitHub state. License remains pending: public access is not an open-source license.
 
 For beginners who mainly use an iPhone. This is a documentation and template workflow with zero runtime dependencies, not a hosted app.
 
@@ -18,12 +18,14 @@ Short entry prompt (the full block above is the fallback when links cannot be re
 
 ```text
 I want to use AI Dev Handoff. Candidate public entry: https://github.com/txytwist/ai-dev-handoff .
-This is currently a private internal preview, not a working public installation link.
+Check actual visibility first: Private requires authorized access or the full starter text; Public means a beta available for review, with license pending.
 If authorized access works, read START_HERE.md and CHATGPT_SETUP.md from the review branch supplied by the owner; otherwise ask for the full portable starter text, never claim to have loaded it.
 First ask: new project or existing project? Give one necessary action at a time.
 ```
 
-After owner-approved licensing and publication, verify that an outside iPhone user can obtain the complete starter at that URL without private access. Until then, external onboarding is pending. See [acceptance gates](docs/mobile-acceptance.md).
+After the owner explicitly changes visibility for beta testing, verify that an outside iPhone user can obtain the complete starter at that URL without private access. Until then, external onboarding is pending. See [acceptance gates](docs/mobile-acceptance.md).
+
+[External AI reviewers: copy one prompt and run the test matrix](docs/external-ai-test.md). Report reproducible findings through [feedback guidance](CONTRIBUTING.md); never post confidential material.
 
 Plan in ChatGPT. Execute in Cloud Codex. Review in ChatGPT.
 
@@ -47,4 +49,4 @@ Use these templates in **your own project repository**; no fork of this framewor
 
 Maintainers run `python3 scripts/validate.py` offline; phone users do not need a terminal or local environment. This checks documentation structure, links and common secret patterns, not platform UI or all possible secrets. See [contribution guidance](CONTRIBUTING.md) and [security](SECURITY.md).
 
-License choice is pending; see [LICENSE_PENDING.md](LICENSE_PENDING.md). The repository stays private until the owner explicitly decides otherwise.
+License choice is pending; see [LICENSE_PENDING.md](LICENSE_PENDING.md). The owner alone decides visibility. Public visibility does not grant a software license.

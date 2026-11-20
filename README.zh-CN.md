@@ -2,7 +2,7 @@
 
 Build software from your phone with ChatGPT, GitHub and Cloud Codex.
 
-**当前为 Private 内部验证版，尚未公开发布或选定开源许可证。**
+**Public Beta 准备阶段。最近核实（2026-11-20）仍为 Private；所有者改为 Public 后即为公开可读测试版，以 GitHub 实际状态为准。许可证仍待决定，公开可读不等于授予开源许可。**
 
 面向主要使用 iPhone、没有编程基础的用户。通过文档与模板，把想法、开发任务、实际改动和审核证据留在 GitHub。零运行时依赖，不需要自建服务器、额外付费 API、终端或桌面 IDE。
 
@@ -15,12 +15,14 @@ Build software from your phone with ChatGPT, GitHub and Cloud Codex.
 短入口指令（读不到链接时需提供上面的完整引导块）：
 
 ```text
-我想使用 AI Dev Handoff。未来公共入口是 https://github.com/txytwist/ai-dev-handoff ，当前仍是 Private 内部版，尚未发布。
+我想使用 AI Dev Handoff。未来公共入口是 https://github.com/txytwist/ai-dev-handoff ，先确认实际可见性：Private 时需授权访问或引导全文，Public 时为公开测试版，许可仍待决定。
 有授权访问时，读取所有者提供的审核分支 START_HERE.md 和 CHATGPT_SETUP.md；读不到就请提供 portable-starter 完整引导块，不假装已加载。
 先问我新项目还是已有项目，一次只给一个必要操作。
 ```
 
-公开后的外部入口必须经所有者决定许可、Public 和发布，再用无私有权限的手机验证。现在不把 Private URL 当作已可用的公共安装入口。详见 [实机待办与公开门槛](docs/mobile-acceptance.md)。
+所有者单独决定 Public 后，再用无私有权限的手机验证外部入口。许可可以继续待定，但不能宣称已开源授权；Private 时不能把 URL 当作已可用公共入口。详见 [实机待办与公开门槛](docs/mobile-acceptance.md)。
+
+外部 AI 测试：复制 [一次式评审提示](docs/external-ai-test.md)，按矩阵报告证据。反馈见 [贡献指南](CONTRIBUTING.md)，不要提交秘密或保密项目。
 
 ## 每天只记三句话
 
@@ -51,4 +53,4 @@ PR 是待审核的变更提案；分支是独立修改空间；Handoff 是说明
 
 账户套餐、GitHub 授权与 Cloud Codex 可用性取决于个人账户。本项目未实测 iPhone 界面或所有套餐，不保证固定按钮名称；基础使用不依赖 Skill/Plugin 安装。只输入项目名不会自动读取规范。
 
-[维护与校验](CONTRIBUTING.md) · [安全](SECURITY.md) · [许可证待定](LICENSE_PENDING.md)。当前仓库保持私有，公开与许可由所有者决定。
+[维护与校验](CONTRIBUTING.md) · [安全](SECURITY.md) · [许可证待定](LICENSE_PENDING.md)。公开与许可由所有者分别决定；状态以 GitHub 实际可见性为准。

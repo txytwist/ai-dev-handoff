@@ -1,8 +1,10 @@
 # 📱 手机上开始：只做当前一步
 
-当前是 **Private、发布前内部验证版**，尚未公开或选定许可证。没有框架读取权限的外部新用户，目前不能只靠仓库链接开始。内部使用者可由所有者在授权范围内提供 [完整引导副本](docs/portable-starter.md) 的**全文**；收到全文后无需访问框架私有链接。尚未收到材料时先索取材料，不反复尝试无权限链接。
+这是 **Public Beta 准备文档**。最近核实（2026-11-20）仓库仍是 Private；所有者改为 Public 后，本工作流进入公开可读测试阶段。以 GitHub 实际状态为准，本文不会自动改变可见性。许可证待所有者决定，公开访问不授予开源许可。
 
-未来公开候选入口为 https://github.com/txytwist/ai-dev-handoff 。**仅在所有者选择许可并明确决定 Public、发布后，该 URL 才能当作公共入口**；目前不承诺可供外部访问。发布前必须完成 [验收清单](docs/mobile-acceptance.md) 的入口检查。
+入口：https://github.com/txytwist/ai-dev-handoff 。Private 时：只有授权者能读，由所有者在授权范围内提供 [完整引导副本](docs/portable-starter.md) 全文；未获材料先索取，不反复尝试无权限链接。Public 后：在手机直接打开入口，复制下面引导块；若 ChatGPT不能读链接，你在手机复制全文给它，不要求赋予私有项目权限。
+
+外部 AI 评审使用 [独立提示与测试矩阵](docs/external-ai-test.md)。公开后仍需验证匿名手机首次使用，见 [实机清单](docs/mobile-acceptance.md)。所有者操作见 [Beta 开放步骤](docs/public-beta.md)。
 
 ## 现在只做这一件事
 
