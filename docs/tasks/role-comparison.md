@@ -19,4 +19,4 @@ https://github.com/txytwist/ai-dev-handoff/issues/5 ，完整正文与评论已�
 见 [Handoff](../handoff/role-comparison.md)。
 
 ## Next action
-交付 REVIEW，用户通知 ChatGPT 审核，不自行合并。
+PR https://github.com/txytwist/ai-dev-handoff/pull/6 ，交付 REVIEW，用户通知 ChatGPT 审核，不自行合并。

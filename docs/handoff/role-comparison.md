@@ -37,7 +37,7 @@ Mermaid临时工具仅装在 `/tmp/ai-dev-handoff-mermaid`，不写入项目依�
 PR创建后检查对应 head 的 GitHub Actions `documentation`，远端结果以真实 run 为准。
 
 ## PR and paths
-PR创建后补回；README.md、README.zh-CN.md、START_HERE.md、docs/workflow.md，及本任务/交接记录。
+PR https://github.com/txytwist/ai-dev-handoff/pull/6 ；README.md、README.zh-CN.md、START_HERE.md、docs/workflow.md，及本任务/交接记录。
 
 ## Limitations
 示意内容不是性能数据或真实使用验收；本地 Mermaid 11.17.2/Chromium 渲染通过，但未直接验证 GitHub当前 Mermaid版本的页面渲染，也未进行真实 iPhone实测。README三列表在窄屏可能需横向滑动，主启动链接置于表前，详情图与等价文字放在工作流页。没有部署、合并、改可见性或许可。
