@@ -6,7 +6,7 @@ import sys
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-REQUIRED = '''README.md README.zh-CN.md START_HERE.md CHATGPT_SETUP.md CODEX_SETUP.md AGENTS.md templates/PROJECT_CONTEXT.md templates/AGENTS.md templates/TASK_TEMPLATE.md templates/HANDOFF_TEMPLATE.md templates/REVIEW_TEMPLATE.md docs/workflow.md docs/mobile-quickstart.md examples/complete-cycle.md .github/ISSUE_TEMPLATE/task.md .github/pull_request_template.md CONTRIBUTING.md SECURITY.md LICENSE_PENDING.md .gitignore docs/tasks/README.md docs/handoff/README.md docs/tasks/phase1-mvp.md docs/handoff/phase1-mvp.md'''.split()
+REQUIRED = '''README.md README.zh-CN.md START_HERE.md CHATGPT_SETUP.md CODEX_SETUP.md AGENTS.md templates/PROJECT_CONTEXT.md templates/AGENTS.md templates/TASK_TEMPLATE.md templates/HANDOFF_TEMPLATE.md templates/REVIEW_TEMPLATE.md docs/workflow.md docs/mobile-quickstart.md examples/complete-cycle.md .github/ISSUE_TEMPLATE/task.md .github/pull_request_template.md CONTRIBUTING.md SECURITY.md LICENSE_PENDING.md .gitignore docs/tasks/README.md docs/handoff/README.md docs/tasks/phase1-mvp.md docs/handoff/phase1-mvp.md docs/portable-starter.md docs/mobile-acceptance.md docs/tasks/review-round1.md docs/handoff/review-round1.md .github/workflows/docs.yml scripts/validate.py scripts/test_validate.py'''.split()
 STATES = 'PLANNED APPROVED IN_PROGRESS REVIEW CHANGES_REQUESTED ACCEPTED'.split()
 COMMON = ['Status', 'Repository and refs', 'Source and approval', 'Acceptance criteria', 'Evidence', 'Next action']
 TEMPLATES = ['templates/TASK_TEMPLATE.md', 'templates/HANDOFF_TEMPLATE.md', 'templates/REVIEW_TEMPLATE.md', '.github/ISSUE_TEMPLATE/task.md', '.github/pull_request_template.md']

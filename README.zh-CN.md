@@ -2,20 +2,25 @@
 
 Build software from your phone with ChatGPT, GitHub and Cloud Codex.
 
+**当前为 Private 内部验证版，尚未公开发布或选定开源许可证。**
+
 面向主要使用 iPhone、没有编程基础的用户。通过文档与模板，把想法、开发任务、实际改动和审核证据留在 GitHub。零运行时依赖，不需要自建服务器、额外付费 API、终端或桌面 IDE。
 
 ## 📱 手机上开始
 
 现在只做一件事：[打开首次使用指南](START_HERE.md)。英文首页见 [README](README.md)。
 
-也可把下面短指令连同本仓库可访问链接（不能读取时粘贴文档内容）发给 ChatGPT：
+首次使用推荐复制 [完整引导块](docs/portable-starter.md)，无需再逐一打开模板。没有框架私有访问权限时，由所有者在授权范围内提供该块全文；收到之前不承诺可以安装。
+
+短入口指令（读不到链接时需提供上面的完整引导块）：
 
 ```text
-我想使用 AI Dev Handoff。请读取我提供的 README、START_HERE.md 和 CHATGPT_SETUP.md。
-先问我创建新项目还是接入已有项目，一次只给一个必要操作。
-先核实你能读取和写入什么；不要假装只凭项目名就加载了规范。
-先规划，等我批准范围后再交给 Codex。
+我想使用 AI Dev Handoff。未来公共入口是 https://github.com/txytwist/ai-dev-handoff ，当前仍是 Private 内部版，尚未发布。
+有授权访问时，读取所有者提供的审核分支 START_HERE.md 和 CHATGPT_SETUP.md；读不到就请提供 portable-starter 完整引导块，不假装已加载。
+先问我新项目还是已有项目，一次只给一个必要操作。
 ```
+
+公开后的外部入口必须经所有者决定许可、Public 和发布，再用无私有权限的手机验证。现在不把 Private URL 当作已可用的公共安装入口。详见 [实机待办与公开门槛](docs/mobile-acceptance.md)。
 
 ## 每天只记三句话
 

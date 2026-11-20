@@ -1,0 +1,22 @@
+name: Documentation checks
+on:
+  pull_request:
+  push:
+    branches: [feat/phase1-mobile-handoff, main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  documentation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Validate documentation offline
+        run: python3 scripts/validate.py
+      - name: Exercise validator failure paths
+        run: python3 scripts/test_validate.py
+      - name: Check whitespace in tracked files
+        run: |
+          empty_tree=$(git hash-object -t tree -w /dev/null)
+          git -c core.whitespace=trailing-space,space-before-tab diff --check "$empty_tree" HEAD

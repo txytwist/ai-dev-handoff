@@ -4,20 +4,26 @@ Build software from your phone with ChatGPT, GitHub and Cloud Codex.
 
 Mobile-First · Beginner-Friendly · Human-in-the-Loop · GitHub-Native
 
+**Private internal preview; not publicly released or licensed open source.**
+
 For beginners who mainly use an iPhone. This is a documentation and template workflow with zero runtime dependencies, not a hosted app.
 
 ## 📱 Start on iPhone
 
 [Open the phone setup guide](START_HERE.md) · [完整中文说明](README.zh-CN.md)
 
-Copy this into ChatGPT to begin (provide the accessible README or paste its contents):
+For internal testing, copy the entire self-contained block in [the portable starter](docs/portable-starter.md). If you cannot open this private repository, ask the owner to provide that full block within authorized sharing scope. A project name alone cannot load instructions.
+
+Short entry prompt (the full block above is the fallback when links cannot be read):
 
 ```text
-I want to use AI Dev Handoff. Read the README and CHATGPT_SETUP.md I provide.
-First ask whether I want a new project or to add this workflow to an existing project.
-Give me one necessary action at a time. Verify access before claiming to read or write GitHub.
-Plan first and wait for my approval before execution.
+I want to use AI Dev Handoff. Candidate public entry: https://github.com/txytwist/ai-dev-handoff .
+This is currently a private internal preview, not a working public installation link.
+If authorized access works, read START_HERE.md and CHATGPT_SETUP.md from the review branch supplied by the owner; otherwise ask for the full portable starter text, never claim to have loaded it.
+First ask: new project or existing project? Give one necessary action at a time.
 ```
+
+After owner-approved licensing and publication, verify that an outside iPhone user can obtain the complete starter at that URL without private access. Until then, external onboarding is pending. See [acceptance gates](docs/mobile-acceptance.md).
 
 Plan in ChatGPT. Execute in Cloud Codex. Review in ChatGPT.
 
