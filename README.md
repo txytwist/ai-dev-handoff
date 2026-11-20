@@ -12,6 +12,20 @@ For beginners who mainly use an iPhone. This is a documentation and template wor
 
 [Open the phone setup guide](START_HERE.md) · [完整中文说明](README.zh-CN.md)
 
+## Roles at a glance
+
+Illustrative comparison, not a claim about every workflow or measured results. [Two flow diagrams and permission details](docs/workflow.md).
+
+| Role | Without a structured handoff (typical manual workflow) | With AI Dev Handoff |
+| --- | --- | --- |
+| 👤 User | Copies context across chats and tracks results | Sets goals, approves scope, initiates handoffs; decides acceptance and merge |
+| 🧠 ChatGPT | Ad hoc advice; task and review context may stay in chat | Plans scope and acceptance; creates Issues when permitted; reviews actual PR evidence |
+| 📦 GitHub | Often stores code while context may be scattered | Keeps Issues, rules, tasks, PRs, handoffs and review evidence in the user's own project |
+| 💻 Cloud Codex | May need requirements re-explained each round | Reads accessible Issues / `docs/tasks/` and rules; implements, tests, submits PR/handoff |
+| 🔄 Collaboration | Manual messages and informal memory | Traceable plan → user approval → execution → review → user decision |
+
+## Copy an initializer
+
 For internal testing, copy the entire self-contained block in [the portable starter](docs/portable-starter.md). If you cannot open this private repository, ask the owner to provide that full block within authorized sharing scope. A project name alone cannot load instructions.
 
 Short entry prompt (the full block above is the fallback when links cannot be read):
