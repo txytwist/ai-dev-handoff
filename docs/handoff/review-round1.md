@@ -31,7 +31,7 @@ git diff --check
 无输出，通过。
 ```
 
-工作流在提交推送后才有真实运行证据；查看 PR Checks 的 `documentation` 与对应 SHA，不将本地结果冒充远端 CI。
+远端实际证据：提交 `8de3b12fe5fca3848320fe35a3c5fc65b97ea11a` 的 GitHub Actions 运行 https://github.com/txytwist/ai-dev-handoff/actions/runs/44651425883 已成功。实际命令 `gh run watch 44651425883 --repo txytwist/ai-dev-handoff --interval 5 --exit-status` 返回 success，退出码 0。该 run 只覆盖此 SHA，不自动覆盖随后交接补证提交；最新 head 的结果看 PR Checks。CI 不是实机验收。
 
 ## PR and paths
 原 PR https://github.com/txytwist/ai-dev-handoff/pull/2 ，无重复 PR。当前任务及新手指南、完整引导、实机清单见上方路径；完整改动以 PR diff 为准。
