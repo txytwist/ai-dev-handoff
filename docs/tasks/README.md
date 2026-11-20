@@ -5,3 +5,5 @@
 本轮任务：[Review 第一轮修订](review-round1.md)。
 
 [Public Beta 准备任务](public-beta.md)：Issue #3。
+
+历史说明：此前记录中的 Private、准备公开与旧验收状态是当时快照；当前 Public Beta 入口以根 README 为准，不改写过去的事实。

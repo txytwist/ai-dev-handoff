@@ -22,10 +22,12 @@ CI不等于真实 iPhone 端到端验收；两种模式、权限回退与第二�
 
 ## Public Beta 反馈
 
-外部 AI 提示与矩阵见 [评审入口](docs/external-ai-test.md)。Public 后可在仓库 Issues 新建 “Beta feedback” 报告；Private 阶段只有授权成员可用，其他测试者把脱敏报告交所有者，由其决定记录。不能承诺工具能自动发 Issue。
+外部 AI 提示与矩阵见 [评审入口](docs/external-ai-test.md)。当前 Public Beta 可在仓库 Issues 新建 “Beta feedback” 报告（提交需 GitHub账号，阅读公开引导无需登录）。不能承诺工具能自动发 Issue。
 
 手机无需 CLI：打开仓库 Issues 创建反馈，选模板；无模板时复制其正文。填写提交 ref、文件路径/行段、严重度、复现步骤、预期/实际、证据及未测试项，区分文档/模拟/实机。AI起草后由用户检查再提交。公开反馈绝不能带密码、令牌、个人数据、私有业务仓库材料或未脱敏聊天/截图。敏感问题走 SECURITY.md 私密流程，不为证明漏洞而公开秘密。
 
 Public 可读不代表获得开源许可证。许可未定时不要承诺他人可任意复制、再分发或商用；授权问题由所有者决定。
 
 公开准备审计（维护者在 Codex执行，不要求手机用户运行）：`python3 scripts/privacy_audit.py`。需完整授权获取的历史；报告计数、范围、命中类型及元数据暴露风险，不把未扫描对象当成安全。
+
+可选维护者 [四档窄屏模拟](docs/mobile-simulation.md) 可重复检查首页和两图，但不是实机或 GitHub生产页面验收；基础使用与标准库CI不依赖这些临时工具。
