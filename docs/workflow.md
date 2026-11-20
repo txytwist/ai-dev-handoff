@@ -4,6 +4,60 @@
 
 用户决定目标、授权与接受结果。ChatGPT 规划、优先写 Issue、审查实际改动。Cloud Codex 在用户选择的仓库实施、测试、提交 PR 和 Handoff。三方没有自动聊天共享或唤醒机制。
 
+## 两种流程对比 / Workflow comparison
+
+这是**无统一交接机制的典型手动示例**与**有真实权限、经用户授权的 AI Dev Handoff** 的说明性对比，不是对其他工具的必然断言，也没有实测性能数据。两图纵向排列，节点短句分行；手机可逐图阅读。中文与英文在同一节点对应。
+
+These are illustrative scenarios, not universal claims or measured outcomes. Short bilingual labels run top to bottom for phone reading.
+
+### 无统一交接 / Without structured handoff
+
+```mermaid
+flowchart TD
+  A["用户：想法<br/>User: idea"] --> B["ChatGPT：讨论<br/>Discussion"]
+  B --> C["用户：传递上下文<br/>User: copy context"]
+  C --> D["Codex：实现<br/>Implementation"]
+  D --> E["用户：整理结果<br/>User: gather results"]
+  E --> F{"证据完整？<br/>Evidence complete?"}
+  F -->|否 / No| C
+  F -->|是 / Yes| G["用户：判断下一步<br/>User: decide next"]
+```
+
+文字版：用户提想法 → ChatGPT讨论 → 用户传递上下文 → Codex实现 → 用户整理结果；证据不全则补上下文，证据齐全后用户判断下一步。其他手动流程也可能保留完整记录。
+
+Text: idea → discussion → user copies context → implementation → user gathers results; fill gaps if evidence is incomplete, otherwise the user decides next. Other manual workflows may also keep complete records.
+
+### 统一交接 / With AI Dev Handoff
+
+```mermaid
+flowchart TD
+  A["用户：目标<br/>User: goal"] --> B["ChatGPT：规划与验收<br/>Plan and criteria"]
+  B --> C{"用户批准范围？<br/>User approves scope?"}
+  C -->|修改<br/>Revise| B
+  C -->|批准<br/>Approve| D["GitHub：Issue 或任务<br/>Issue or versioned task"]
+  D --> E["用户：启动 Codex<br/>User: start Codex"]
+  E --> F["Codex：开发与测试<br/>Implement and test"]
+  F --> G["GitHub：PR 与交接<br/>PR and handoff"]
+  G --> H["用户：返回 ChatGPT<br/>User: return to ChatGPT"]
+  H --> I["ChatGPT：证据审核<br/>Review real evidence"]
+  I --> J{"用户决定<br/>User decision"}
+  J -->|返工<br/>Rework| B
+  J -->|接受<br/>Accept| K["记录接受，合并另授权<br/>Accept; merge separately"]
+  K -->|新任务<br/>New task| B
+```
+
+文字版：目标 → 规划 → 用户批准 → 持久任务 → 用户启动 Codex → 实施测试 → PR/交接 → 用户返回 ChatGPT → 证据审核 → 用户决定；返工先批准修改范围，新任务重新规划。接受不自动合并。
+
+Text: goal → plan → user approval → durable task → user starts Codex → implementation/tests → PR/handoff → user returns to ChatGPT → evidence review → user decision. Rework needs approved scope; new tasks return to planning. Acceptance does not merge a PR.
+
+**没有统一交接机制时，用户常要兼任传话者与上下文整理者；有 AI Dev Handoff 后，用户仍掌握决策权，但规划、执行、记录和审核有了明确分工。**
+
+**Without a structured handoff, the user often acts as messenger and context keeper. With AI Dev Handoff, the user remains in control while planning, execution, records and review have clear owners.**
+
+权限与边界：ChatGPT仅在有实际权限及授权时优先写 Issue；写不了则给完整任务。Codex必须确认 Issue可读，读不到用正文或版本化 `docs/tasks/`，先保存批准任务再执行。图中的 GitHub记录属于**用户自己的项目仓库**。每次切换由用户主动发起，没有聊天自动同步或自动唤醒。审核、用户接受、合并/部署/公开授权是不同决定；图中没有自动合并。
+
+Permissions and boundaries: ChatGPT prefers Issues only with actual write access and authorization; otherwise it supplies a full task. Codex verifies Issue access and falls back to pasted content or versioned `docs/tasks/`, saving the approved task before implementation. Records belong in **the user's own project repository**. Users initiate every switch; chats do not auto-sync or wake each other. Review, acceptance, and permission to merge/deploy/publish are separate decisions. No automatic merge is shown.
+
 ## 状态与证据
 
 | 状态 | 谁推动、需要什么 |
