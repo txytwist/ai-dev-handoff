@@ -2,46 +2,48 @@
 
 Build software from your phone with ChatGPT, GitHub and Cloud Codex.
 
-Mobile-First · Beginner-Friendly · Human-in-the-Loop · GitHub-Native
-
-**Public Beta preparation.** Private at the last verified check (2026-11-20). After the owner changes visibility, this becomes a publicly readable beta; check the live GitHub state. License remains pending: public access is not an open-source license.
-
-For beginners who mainly use an iPhone. This is a documentation and template workflow with zero runtime dependencies, not a hosted app.
-
 ## 📱 Start on iPhone
 
-[Open the phone setup guide](START_HERE.md) · [完整中文说明](README.zh-CN.md)
+[Copy the complete starter](docs/portable-starter.md) · [Step-by-step setup](START_HERE.md) · [中文](README.zh-CN.md)
+
+**Public Beta — license pending; real iPhone acceptance not completed.** The framework is public. No login, private-repo permission or fork is needed to read this guide. Your own project can stay Private.
+
+Copy the starter's single text block into ChatGPT. If the AI cannot read the public link, paste the full block yourself; you do not need to ask the owner for public instructions. A project name alone does not load rules.
+
+For beginners who mainly use an iPhone. A documentation/template workflow with zero runtime dependencies, not a hosted app.
+
+Plan in ChatGPT. Execute in Cloud Codex. Review in ChatGPT.
 
 ## Roles at a glance
 
-Illustrative comparison, not a claim about every workflow or measured results. [Two flow diagrams and permission details](docs/workflow.md).
+Illustrative manual scenario, not a universal claim or measured benefit. Short role sections replace a wide table. [Flow diagrams and permission details](docs/workflow.md).
 
-| Role | Without a structured handoff (typical manual workflow) | With AI Dev Handoff |
-| --- | --- | --- |
-| 👤 User | Copies context across chats and tracks results | Sets goals, approves scope, initiates handoffs; decides acceptance and merge |
-| 🧠 ChatGPT | Ad hoc advice; task and review context may stay in chat | Plans scope and acceptance; creates Issues when permitted; reviews actual PR evidence |
-| 📦 GitHub | Often stores code while context may be scattered | Keeps Issues, rules, tasks, PRs, handoffs and review evidence in the user's own project |
-| 💻 Cloud Codex | May need requirements re-explained each round | Reads accessible Issues / `docs/tasks/` and rules; implements, tests, submits PR/handoff |
-| 🔄 Collaboration | Manual messages and informal memory | Traceable plan → user approval → execution → review → user decision |
+### 👤 User
 
-## Copy an initializer
+- **Without:** Copies context across chats and tracks results.
+- **With:** Sets goals, approves scope, initiates handoffs; decides acceptance and merge.
 
-For internal testing, copy the entire self-contained block in [the portable starter](docs/portable-starter.md). If you cannot open this private repository, ask the owner to provide that full block within authorized sharing scope. A project name alone cannot load instructions.
+### 🧠 ChatGPT
 
-Short entry prompt (the full block above is the fallback when links cannot be read):
+- **Without:** Ad hoc advice; task and review context may stay in chat.
+- **With:** Plans scope and acceptance; creates Issues when permitted; reviews actual PR evidence.
 
-```text
-I want to use AI Dev Handoff. Candidate public entry: https://github.com/txytwist/ai-dev-handoff .
-Check actual visibility first: Private requires authorized access or the full starter text; Public means a beta available for review, with license pending.
-If authorized access works, read START_HERE.md and CHATGPT_SETUP.md from the review branch supplied by the owner; otherwise ask for the full portable starter text, never claim to have loaded it.
-First ask: new project or existing project? Give one necessary action at a time.
-```
+### 📦 GitHub
 
-After the owner explicitly changes visibility for beta testing, verify that an outside iPhone user can obtain the complete starter at that URL without private access. Until then, external onboarding is pending. See [acceptance gates](docs/mobile-acceptance.md).
+- **Without:** Often stores code while context may be scattered.
+- **With:** Keeps Issues, rules, tasks, PRs, handoffs and review evidence in the user's own project.
 
-[External AI reviewers: copy one prompt and run the test matrix](docs/external-ai-test.md). Report reproducible findings through [feedback guidance](CONTRIBUTING.md); never post confidential material.
+### 💻 Cloud Codex
 
-Plan in ChatGPT. Execute in Cloud Codex. Review in ChatGPT.
+- **Without:** May need requirements re-explained each round.
+- **With:** Reads accessible Issues / `docs/tasks/` and rules; implements, tests, submits PR/handoff.
+
+### 🔄 Collaboration
+
+- **Without:** Manual messages and informal memory.
+- **With:** Traceable plan → user approval → execution → review → user decision.
+
+[External AI review prompt](docs/external-ai-test.md) · [Feedback](CONTRIBUTING.md) · [iPhone checks still to run](docs/mobile-acceptance.md)
 
 ## What you get
 

@@ -6,21 +6,21 @@
 
 ## 两种流程对比 / Workflow comparison
 
-这是**无统一交接机制的典型手动示例**与**有真实权限、经用户授权的 AI Dev Handoff** 的说明性对比，不是对其他工具的必然断言，也没有实测性能数据。两图纵向排列，节点短句分行；手机可逐图阅读。中文与英文在同一节点对应。
+这是**无统一交接机制的典型手动示例**与**有真实权限、经用户授权的 AI Dev Handoff** 的说明性对比，不是对其他工具的必然断言，也没有实测性能数据。两图纵向排列，节点短句分行；手机可逐图阅读。图中只用中文短标签；每图下方保留完整中英文文字版。
 
-These are illustrative scenarios, not universal claims or measured outcomes. Short bilingual labels run top to bottom for phone reading.
+These are illustrative scenarios, not universal claims or measured outcomes. Short Chinese labels run top to bottom; full equivalent Chinese and English text follows each diagram.
 
 ### 无统一交接 / Without structured handoff
 
 ```mermaid
 flowchart TD
-  A["用户：想法<br/>User: idea"] --> B["ChatGPT：讨论<br/>Discussion"]
-  B --> C["用户：传递上下文<br/>User: copy context"]
-  C --> D["Codex：实现<br/>Implementation"]
-  D --> E["用户：整理结果<br/>User: gather results"]
-  E --> F{"证据完整？<br/>Evidence complete?"}
-  F -->|否 / No| C
-  F -->|是 / Yes| G["用户：判断下一步<br/>User: decide next"]
+  A["用户提想法"] --> B["ChatGPT讨论"]
+  B --> C["用户传上下文"]
+  C --> D["Codex实现"]
+  D --> E["用户整理结果"]
+  E --> F{"证据完整？"}
+  F -->|否| C
+  F -->|是| G["用户决定下一步"]
 ```
 
 文字版：用户提想法 → ChatGPT讨论 → 用户传递上下文 → Codex实现 → 用户整理结果；证据不全则补上下文，证据齐全后用户判断下一步。其他手动流程也可能保留完整记录。
@@ -31,19 +31,20 @@ Text: idea → discussion → user copies context → implementation → user ga
 
 ```mermaid
 flowchart TD
-  A["用户：目标<br/>User: goal"] --> B["ChatGPT：规划与验收<br/>Plan and criteria"]
-  B --> C{"用户批准范围？<br/>User approves scope?"}
-  C -->|修改<br/>Revise| B
-  C -->|批准<br/>Approve| D["GitHub：Issue 或任务<br/>Issue or versioned task"]
-  D --> E["用户：启动 Codex<br/>User: start Codex"]
-  E --> F["Codex：开发与测试<br/>Implement and test"]
-  F --> G["GitHub：PR 与交接<br/>PR and handoff"]
-  G --> H["用户：返回 ChatGPT<br/>User: return to ChatGPT"]
-  H --> I["ChatGPT：证据审核<br/>Review real evidence"]
-  I --> J{"用户决定<br/>User decision"}
-  J -->|返工<br/>Rework| B
-  J -->|接受<br/>Accept| K["记录接受，合并另授权<br/>Accept; merge separately"]
-  K -->|新任务<br/>New task| B
+  A["用户提目标"] --> B["规划与验收"]
+  B --> C{"用户批准？"}
+  C -->|修改| B
+  C -->|批准| D["GitHub任务"]
+  D --> E["用户启动Codex"]
+  E --> F["开发与测试"]
+  F --> G["PR与交接"]
+  G --> H["用户返回ChatGPT"]
+  H --> I["证据审核"]
+  I --> J{"用户决定"}
+  J -->|返工| B
+  J -->|接受| K["记录接受"]
+  K --> L["合并另授权"]
+  L -->|新任务| B
 ```
 
 文字版：目标 → 规划 → 用户批准 → 持久任务 → 用户启动 Codex → 实施测试 → PR/交接 → 用户返回 ChatGPT → 证据审核 → 用户决定；返工先批准修改范围，新任务重新规划。接受不自动合并。

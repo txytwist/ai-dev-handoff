@@ -5,3 +5,5 @@
 最新：[PR #2 第一轮优化](review-round1.md)，状态 REVIEW；此前 Phase 1 记录保留为历史证据。
 
 [Public Beta 准备交接](public-beta.md)：公开准备与隐私限制，等待审核。
+
+历史说明：此前记录中的 Private、准备公开与旧验收状态是当时快照；当前 Public Beta 入口以根 README 为准，不改写过去的事实。

@@ -2,9 +2,9 @@
 
 把下面块保存到手机 ChatGPT Project 的项目指令。规范的权威版本放在**用户项目仓库**：`AGENTS.md`、`PROJECT_CONTEXT.md`、最新任务及 `docs/handoff/`。每个新会话要求实际加载并报告仓库、ref 和路径。Project 指令存放入口随账户界面不同；不能用时每次粘贴。
 
-## 入口与私有阶段
+## Public Beta 入口
 
-首次使用直接复制 [自包含完整引导](docs/portable-starter.md)，读不到框架时由所有者在授权范围内提供全文。下方指令适合已取得引导或已接入的项目。公共候选 URL 是 https://github.com/txytwist/ai-dev-handoff ，最近核实（2026-11-20）仍为 Private；所有者改为 Public 后为公开测试版，许可继续待定，仍要验证 README/指令实际可读，不能仅凭 URL 假称已加载。
+框架已公开测试，许可证待定，实机验收未完成。首次直接复制 [完整引导](docs/portable-starter.md)，无需向所有者索取或 Fork。公共 URL：https://github.com/txytwist/ai-dev-handoff 。AI读不到时由用户粘贴公开正文，仍须报告实际读取的 ref/文件，不凭 URL 假称已加载。用户业务仓库的读取/写入授权需要分别核实。
 
 ## 可复制初始化
 

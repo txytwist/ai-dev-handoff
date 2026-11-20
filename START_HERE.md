@@ -1,16 +1,16 @@
 # 📱 手机上开始：只做当前一步
 
-这是 **Public Beta 准备文档**。最近核实（2026-11-20）仓库仍是 Private；所有者改为 Public 后，本工作流进入公开可读测试阶段。以 GitHub 实际状态为准，本文不会自动改变可见性。许可证待所有者决定，公开访问不授予开源许可。
+**Public Beta（公开测试中，许可证未确定，实机验收未完成）。** 框架仓库已公开；阅读引导不需登录、私有权限或 Fork。你的业务仓库仍建议默认 Private。
 
-入口：https://github.com/txytwist/ai-dev-handoff 。Private 时：只有授权者能读，由所有者在授权范围内提供 [完整引导副本](docs/portable-starter.md) 全文；未获材料先索取，不反复尝试无权限链接。Public 后：在手机直接打开入口，复制下面引导块；若 ChatGPT不能读链接，你在手机复制全文给它，不要求赋予私有项目权限。
+直接打开 [完整引导](docs/portable-starter.md) 并复制全文。ChatGPT读不到公开链接时，你粘贴全文即可，不必找所有者取材料。入口：https://github.com/txytwist/ai-dev-handoff 。
 
-外部 AI 评审使用 [独立提示与测试矩阵](docs/external-ai-test.md)。公开后仍需验证匿名手机首次使用，见 [实机清单](docs/mobile-acceptance.md)。所有者操作见 [Beta 开放步骤](docs/public-beta.md)。
+外部 AI 评审使用 [独立提示与测试矩阵](docs/external-ai-test.md)，真实手机视觉验收看 [极简检查单](docs/mobile-acceptance.md)，当前状态见 [Beta说明](docs/public-beta.md)。
 
 统一交接让规划、执行、记录与审核分工清楚，用户仍掌握决策权。
 
 ## 现在只做这一件事
 
-复制 [完整引导副本](docs/portable-starter.md) 中唯一的文本块到 ChatGPT。打不开时让所有者提供块的全文。它会先问你“新项目还是已有项目”，再逐步带你走。不要一次执行下面所有行；表格是你随时确认位置的路线图。
+复制 [完整引导副本](docs/portable-starter.md) 中唯一的文本块到 ChatGPT。若AI打不开链接，请在手机浏览器打开公开引导页，复制文本块给它；若页面本身访问失败，记录阻塞，不假称已读取。它会先问你“新项目还是已有项目”，再逐步带你走。不要一次执行下面所有行；表格是你随时确认位置的路线图。
 
 访问条件：手机能使用 ChatGPT、GitHub 和 Cloud Codex；套餐、连接授权与额度依账户而定。不需要终端、SSH、电脑、自建服务器或额外 API。iPhone UI 未实测，以下按功能描述，不承诺按钮名。
 

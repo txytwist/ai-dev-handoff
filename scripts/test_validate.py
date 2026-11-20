@@ -16,10 +16,12 @@ with tempfile.TemporaryDirectory() as folder:
     path = root / 'templates/TASK_TEMPLATE.md'
     path.write_text(path.read_text().replace('## Evidence', '## Removed'))
     (root / 'fixture.md').write_text('ghp_' + 'A' * 30)
+    with (root / 'START_HERE.md').open('a') as handle:
+        handle.write('\nFor internal testing\n')
     errors, _ = validate(root)
-    for expected in ['missing: SECURITY.md', 'missing: .github/workflows/docs.yml', 'broken/escaping link', 'missing field Evidence', 'possible GitHub token']:
+    for expected in ['missing: SECURITY.md', 'missing: .github/workflows/docs.yml', 'broken/escaping link', 'missing field Evidence', 'possible GitHub token', 'stale private-preview onboarding']:
         assert any(expected in error for error in errors), expected
-print('PASS: clean fixture accepted; missing file/workflow, broken link, missing field and synthetic token rejected; temporary fixture removed.')
+print('PASS: clean fixture accepted; missing file/workflow, broken link, missing field and synthetic token and stale private onboarding rejected; temporary fixture removed.')
 
 from privacy_audit import findings
 assert 'GitHub token' in findings(('ghp_' + 'B' * 30).encode())

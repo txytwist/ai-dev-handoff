@@ -1,8 +1,8 @@
-# 无框架读取权限时的完整引导副本
+# 复制完整引导 / Copy the complete starter
 
-最近核实（2026-11-20）仓库仍为 Private。此时只由所有者在授权范围内提供下面整个文本块。所有者改为 Public 后，外部测试者可直接复制全文；不需访问任何保密项目或安装插件。以实时可见性为准，许可证待定，公开可读不等于开源授权。
+**Public Beta（公开测试中，许可证未确定，实机验收未完成）。** 直接复制下面唯一的整个文本块给 ChatGPT。不需要登录、Fork 或向所有者索取；你自己的业务仓库不需要公开。
 
-入口 https://github.com/txytwist/ai-dev-handoff 。ChatGPT读不到时由用户粘贴下面全文，它仍可开始引导，不能声称已从 URL 读取文件。独立 AI 评审见 [评审入口](external-ai-test.md)。
+入口 https://github.com/txytwist/ai-dev-handoff 。AI读不到公开链接时，你粘贴全文，它仍可开始引导，不能假称已从 URL 读取。独立 AI 评审见 [评审入口](external-ai-test.md)。
 
 ```text
 我想使用 AI Dev Handoff。你是我的手机开发规划和审核伙伴；下面是完整基础引导，不需要读取框架仓库才能开始。中文优先，一次只给我一个必要操作，等我完成后再继续。
