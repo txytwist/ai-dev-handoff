@@ -30,10 +30,12 @@ git diff --cached --check
 
 隐私审计：先 `git fetch origin`，`git rev-parse --is-shallow-repository` 为 false；本地已获取 main 与原功能分支 refs。新增文件暂存后运行 `python3 scripts/privacy_audit.py`：37 个跟踪文件、46 个唯一可达 blob、6 个提交、0 非 UTF-8 跳过，无内容模式命中；2 组作者/提交者姓名/邮箱组合仍待所有者评估。该计数是提交前基线历史快照；交付提交后重跑的范围会增加。仅对已获取 refs 作结论，不代表全 GitHub 历史或全量平台数据安全。已排除校验器内“无关项目名”检测规则的定义行（已知扫描签名，不是借用的项目材料）。不在报告中回显潜在秘密或邮箱。
 
-远端 CI：PR 创建后检查实际 run；未运行前不声称通过。
+交付实现提交 `d85813c` 后重跑 `python3 scripts/privacy_audit.py`：37 跟踪文件、64 唯一可达 blob、7 提交、0 非 UTF-8 跳过，无内容模式命中；2 组身份元数据风险仍保留。
+
+远端 CI：以 PR #4 对应 head 的 `documentation` 检查为准，不用本地结果代替。
 
 ## PR and paths
-创建后补回本分支 PR；`docs/external-ai-test.md` 为评审入口，`docs/public-beta.md` 为所有者操作，`.github/ISSUE_TEMPLATE/beta-feedback.md` 为反馈模板。
+PR https://github.com/txytwist/ai-dev-handoff/pull/4 ；`docs/external-ai-test.md` 为评审入口，`docs/public-beta.md` 为所有者操作，`.github/ISSUE_TEMPLATE/beta-feedback.md` 为反馈模板。
 
 ## Limitations
 启发式扫描不穷尽秘密。只覆盖本地可获取 refs，未获取/已删远端对象不在范围；GitHub Issues/PR/评论/附件/Actions日志/artifacts未完成全量隐私复核。Git元数据可能暴露作者姓名和邮箱，不能将内容扫描无命中当作所有者已接受。没有重写历史、修改其他项目或读取真实业务凭据。iPhone与外部 AI实测未运行；许可证待定不等于开源授权。

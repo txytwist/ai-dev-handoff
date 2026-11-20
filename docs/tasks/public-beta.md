@@ -22,4 +22,4 @@ https://github.com/txytwist/ai-dev-handoff/issues/3 （正文已读取，无评�
 见 [Handoff](../handoff/public-beta.md)。
 
 ## Next action
-完成后 REVIEW，等待 ChatGPT 审核。许可、合并与 Public 都单独决定。
+PR https://github.com/txytwist/ai-dev-handoff/pull/4 ，状态 REVIEW，等待 ChatGPT 审核。许可、合并与 Public 都单独决定。
