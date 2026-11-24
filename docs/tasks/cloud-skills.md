@@ -20,3 +20,5 @@ REVIEW
 
 ## Next action
 PR https://github.com/txytwist/ai-dev-handoff/pull/15 ，状态 REVIEW，等待ChatGPT审核。
+
+2026-11-24后续要求：用户已将可选继承改为默认继承；本记录保留初轮快照，最新修订见 [默认继承任务](cloud-skills-defaults.md)。

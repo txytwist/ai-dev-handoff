@@ -10,7 +10,7 @@ import subprocess
 import sys
 import tempfile
 import time
-from init_repo_skills import ROOT, inherit
+from init_repo_skills import ROOT, inherit, initialize
 
 
 def integrity(root):
@@ -79,12 +79,22 @@ def main():
     with tempfile.TemporaryDirectory(prefix='handoff-skills-') as folder:
         fresh = Path(folder)
         subprocess.run(['git', 'init', '-q', str(fresh)], check=True)
-        for name in ['AGENTS.md', 'PROJECT_CONTEXT.md']:
-            (fresh / name).write_bytes((ROOT / 'templates' / name).read_bytes())
-        (fresh / 'docs' / 'handoff').mkdir(parents=True)
-        (fresh / 'docs' / 'handoff' / 'README.md').write_text('Handoff records; review does not authorize merge.\n')
+        (fresh / 'README.md').write_text('Existing initial README\n')
+        initialize(fresh)
+        assert (fresh / 'README.md').read_text() == 'Existing initial README\n'
         original = (fresh / 'AGENTS.md').read_bytes()
-        inherit(fresh)
+        assert original == (ROOT / 'templates' / 'AGENTS.md').read_bytes()
+        assert '每次新会话必须主动读取' in original.decode()
+        assert '只有用户明确禁用' in original.decode()
+        assert '加载失败' in original.decode()
+        assert (fresh / 'PROJECT_CONTEXT.md').exists()
+        assert (fresh / 'docs' / 'handoff' / 'README.md').exists()
+        try:
+            initialize(fresh)
+        except FileExistsError:
+            pass
+        else:
+            raise AssertionError('must refuse reinitializing an existing project')
         integrity(fresh)
         try:
             inherit(fresh)
@@ -102,7 +112,14 @@ def main():
         else:
             raise AssertionError('must reject damaged vendored content')
         skill.write_bytes((ROOT / '.agents' / 'skills' / 'ponytail' / 'SKILL.md').read_bytes())
-        print('PASS: complete pinned files, hashes, fresh-project inheritance, no-overwrite guard, preserved AGENTS, corruption rejection.')
+        with tempfile.TemporaryDirectory(prefix='handoff-disabled-') as disabled_folder:
+            disabled = Path(disabled_folder)
+            subprocess.run(['git', 'init', '-q', str(disabled)], check=True)
+            initialize(disabled, disable_skills=True)
+            assert not (disabled / '.agents' / 'skills').exists()
+            assert '--disable-skills' in (disabled / 'PROJECT_CONTEXT.md').read_text()
+            assert (disabled / 'AGENTS.md').read_bytes() == original
+        print('PASS: default new-project skills, full hashes, per-session policy, explicit opt-out record, no-overwrite, preserved guidance, corruption rejection.')
         if '--host' in sys.argv:
             print(subprocess.check_output(['codex', '--version'], text=True).strip())
             discover([ROOT, fresh])

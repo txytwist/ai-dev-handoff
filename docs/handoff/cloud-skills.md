@@ -56,3 +56,5 @@ PR https://github.com/txytwist/ai-dev-handoff/pull/15 。来源/许可/完整性
 
 ## Next action
 ChatGPT审核PR与固定上游文件；用户如需完整产品面结论，在新云端任务选择含该分支的仓库显式调用两个Skill，再记录模型执行证据。不得自行合并。
+
+2026-11-24后续要求：用户已将可选继承改为默认继承；本记录保留初轮快照，最新修订见 [默认继承交接](cloud-skills-defaults.md)。
