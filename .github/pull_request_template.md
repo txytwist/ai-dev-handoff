@@ -19,7 +19,7 @@ REVIEW
 <实际命令及结果；未运行项与原因>
 
 ## Handoff and limitations
-<docs/handoff 链接；风险、未验证项>
+<详细交接直接写在PR；NEXT_TASK.md保存当前六项状态；仅里程碑附docs/handoff归档链接；风险、未验证项>
 
 ## Next action
 用户主动返回 ChatGPT 审核并决定接受/返工。不得自行合并、部署、发布或公开仓库。

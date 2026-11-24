@@ -8,6 +8,28 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 
 
+NEXT_TASK_TEMPLATE = """# NEXT_TASK
+
+## 当前状态
+PLANNED
+
+## PR或分支
+尚未创建
+
+## 验证结果
+尚未运行
+
+## 未测项
+项目适用检查与真实使用尚未验证
+
+## 下一步唯一任务
+读取AGENTS.md与当前Issue/PR，确定并完成下一项批准任务。
+
+## 阻塞
+无；未确定的关键范围、数据及发布决定须用户确认。
+"""
+
+
 def inherit(destination):
     destination = Path(destination).resolve()
     actual = subprocess.check_output(['git', '-C', str(destination), 'rev-parse', '--show-toplevel'], text=True).strip()
@@ -38,9 +60,7 @@ def initialize(destination, *, disable_skills=False):
     if disable_skills:
         context += '\n## Explicit user Skill decision\nUser explicitly disabled both caveman and ponytail during initialization (--disable-skills). Skip until the user re-enables them.\n'
     (destination / 'PROJECT_CONTEXT.md').write_text(context)
-    handoff = destination / 'docs' / 'handoff'
-    handoff.mkdir(parents=True)
-    (handoff / 'README.md').write_text('Handoff records: task, PR, refs, checks, limits and next action. Review does not authorize merge.\n')
+    (destination / 'NEXT_TASK.md').write_text(NEXT_TASK_TEMPLATE)
     return destination
 
 

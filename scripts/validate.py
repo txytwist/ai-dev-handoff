@@ -6,7 +6,7 @@ import sys
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-REQUIRED = '''README.md README.zh-CN.md START_HERE.md CHATGPT_SETUP.md CODEX_SETUP.md AGENTS.md templates/PROJECT_CONTEXT.md templates/AGENTS.md templates/TASK_TEMPLATE.md templates/HANDOFF_TEMPLATE.md templates/REVIEW_TEMPLATE.md docs/workflow.md docs/mobile-quickstart.md examples/complete-cycle.md .github/ISSUE_TEMPLATE/task.md .github/pull_request_template.md CONTRIBUTING.md SECURITY.md LICENSE_PENDING.md .gitignore docs/tasks/README.md docs/handoff/README.md docs/tasks/phase1-mvp.md docs/handoff/phase1-mvp.md docs/portable-starter.md docs/mobile-acceptance.md docs/tasks/review-round1.md docs/handoff/review-round1.md .github/workflows/docs.yml scripts/validate.py scripts/test_validate.py docs/external-ai-test.md docs/public-beta.md docs/tasks/public-beta.md docs/handoff/public-beta.md .github/ISSUE_TEMPLATE/beta-feedback.md scripts/privacy_audit.py docs/mobile-simulation.md scripts/check_mobile.mjs docs/tasks/public-beta-mobile-ux.md docs/handoff/public-beta-mobile-ux.md'''.split()
+REQUIRED = '''NEXT_TASK.md README.md README.zh-CN.md START_HERE.md CHATGPT_SETUP.md CODEX_SETUP.md AGENTS.md templates/PROJECT_CONTEXT.md templates/AGENTS.md templates/TASK_TEMPLATE.md templates/HANDOFF_TEMPLATE.md templates/REVIEW_TEMPLATE.md docs/workflow.md docs/mobile-quickstart.md examples/complete-cycle.md .github/ISSUE_TEMPLATE/task.md .github/pull_request_template.md CONTRIBUTING.md SECURITY.md LICENSE_PENDING.md .gitignore docs/tasks/README.md docs/handoff/README.md docs/tasks/phase1-mvp.md docs/handoff/phase1-mvp.md docs/portable-starter.md docs/mobile-acceptance.md docs/tasks/review-round1.md docs/handoff/review-round1.md .github/workflows/docs.yml scripts/validate.py scripts/test_validate.py docs/external-ai-test.md docs/public-beta.md docs/tasks/public-beta.md docs/handoff/public-beta.md .github/ISSUE_TEMPLATE/beta-feedback.md scripts/privacy_audit.py docs/mobile-simulation.md scripts/check_mobile.mjs docs/tasks/public-beta-mobile-ux.md docs/handoff/public-beta-mobile-ux.md'''.split()
 STATES = 'PLANNED APPROVED IN_PROGRESS REVIEW CHANGES_REQUESTED ACCEPTED'.split()
 COMMON = ['Status', 'Repository and refs', 'Source and approval', 'Acceptance criteria', 'Evidence', 'Next action']
 TEMPLATES = ['templates/TASK_TEMPLATE.md', 'templates/HANDOFF_TEMPLATE.md', 'templates/REVIEW_TEMPLATE.md', '.github/ISSUE_TEMPLATE/task.md', '.github/pull_request_template.md']
@@ -65,6 +65,15 @@ def validate(root):
         path = root / name
         if path.exists() and re.search(stale, path.read_text(), re.I):
             errors.append(f'{name}: stale private-preview onboarding')
+    next_task = root / 'NEXT_TASK.md'
+    if next_task.exists():
+        text = next_task.read_text()
+        for field in ['当前状态', 'PR或分支', '验证结果', '未测项', '下一步唯一任务', '阻塞']:
+            if len(re.findall(r'^## ' + field + r'$', text, re.M)) != 1:
+                errors.append(f'NEXT_TASK.md: missing or duplicate field {field}')
+        match = re.search(r'^## 下一步唯一任务\n(.*?)(?=^## |\Z)', text, re.M | re.S)
+        if match and len([line for line in match.group(1).splitlines() if line.strip()]) != 1:
+            errors.append('NEXT_TASK.md: expected exactly one next task')
     scanned = 0
     for path in sorted(root.rglob('*')):
         if not path.is_file() or '.git' in path.relative_to(root).parts or path.suffix not in ('.md', '.yml', '.yaml'):

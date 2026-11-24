@@ -55,9 +55,9 @@ Text: goal → plan → user approval → durable task → user starts Codex →
 
 **Without a structured handoff, the user often acts as messenger and context keeper. With AI Dev Handoff, the user remains in control while planning, execution, records and review have clear owners.**
 
-权限与边界：ChatGPT仅在有实际权限及授权时优先写 Issue；写不了则给完整任务。Codex必须确认 Issue可读，读不到用正文或版本化 `docs/tasks/`，先保存批准任务再执行。图中的 GitHub记录属于**用户自己的项目仓库**。每次切换由用户主动发起，没有聊天自动同步或自动唤醒。审核、用户接受、合并/部署/公开授权是不同决定；图中没有自动合并。
+权限与边界：ChatGPT仅在有实际权限及授权时优先写 Issue；写不了则给完整任务。Codex必须确认 Issue可读，读不到用正文或版本化 `NEXT_TASK.md`，先保存批准任务再执行。图中的 GitHub记录属于**用户自己的项目仓库**。每次切换由用户主动发起，没有聊天自动同步或自动唤醒。审核、用户接受、合并/部署/公开授权是不同决定；图中没有自动合并。
 
-Permissions and boundaries: ChatGPT prefers Issues only with actual write access and authorization; otherwise it supplies a full task. Codex verifies Issue access and falls back to pasted content or versioned `docs/tasks/`, saving the approved task before implementation. Records belong in **the user's own project repository**. Users initiate every switch; chats do not auto-sync or wake each other. Review, acceptance, and permission to merge/deploy/publish are separate decisions. No automatic merge is shown.
+Permissions and boundaries: ChatGPT prefers Issues only with actual write access and authorization; otherwise it supplies a full task. Codex verifies Issue access and falls back to pasted content or versioned `NEXT_TASK.md`, saving the approved task before implementation. Records belong in **the user's own project repository**. Users initiate every switch; chats do not auto-sync or wake each other. Review, acceptance, and permission to merge/deploy/publish are separate decisions. No automatic merge is shown.
 
 ## 状态与证据
 
@@ -72,14 +72,16 @@ Permissions and boundaries: ChatGPT prefers Issues only with actual write access
 
 正常流转：PLANNED → APPROVED → IN_PROGRESS → REVIEW → 用户决定 ACCEPTED 或 CHANGES_REQUESTED。返工批准后回 IN_PROGRESS。新需求回 PLANNED。任务文件是状态记录；Issue/PR 开关状态不等于业务验收。
 
-## 任务持久化
+## 任务持久化与轻量交接
 
-有权限时 ChatGPT 在用户项目仓库创建 Issue。Codex 保存批准范围和来源到 `docs/tasks/`，避免聊天丢失。ChatGPT 无写权限则用户粘贴完整任务；Codex 无 Issue 读取权限则提供版本化任务或正文。任务未读全不实施。每次保留来源、仓库、基线、批准、验收。
+GitHub是项目记录的准绳。接手先读AGENTS.md、NEXT_TASK.md（如存在）、当前Issue/PR及评论，再看上下文与代码。ChatGPT在权限和授权允许时建仓/创建Issue并审核PR；Codex在独立分支实施、测试及交付。
+
+日常只更新NEXT_TASK.md状态文件：当前状态、PR或分支、验证结果、未测项、下一步唯一任务、阻塞；详细需求、批准、测试输出和审核意见留Issue/PR。只有里程碑才归档docs/handoff/，不每轮另建任务/审核/交接文件。代码与实际需求文档照常修改，已有历史快照不改写。
+
+ChatGPT不能写Issue或Codex不能读Issue时，用户提供完整任务；执行前保存在NEXT_TASK.md，再在PR补全详情，不能因减少文件丢失验收/批准证据。已有docs/tasks/仍可读取。无法推送时如实记录阻塞，不声称GitHub已有结果。
 
 ## 审核实际变更
 
-用户返回 ChatGPT 提供 PR、提交 SHA 与 Handoff。ChatGPT核对批准范围与实际 diff，逐条评估验收，查测试命令与输出，指出未解决风险。没有 GitHub 读权限时要求完整 diff、文件、测试日志和 ref，并明确只审核所提供快照，远端状态未核实。
+用户主动返回ChatGPT提供一个PR链接。ChatGPT读取实际diff、批准范围及命令结果，逐条核验验收，区分建议与用户接受。无读取权限时要求最少必要的完整快照并说明未核实远端，不能虚构通过。
 
-用 [审核模板](../templates/REVIEW_TEMPLATE.md) 保存结果到项目 `docs/reviews/`；有写能力的 ChatGPT 在授权范围内保存，否则用户把记录交 Codex归档。返工创建/更新任务，关联原 PR 和审核。每轮 Handoff 记录验证过的提交；后续代码变动使旧证据不自动覆盖新提交。
-
-用户接受后是否合并、部署、发布、公开仓库分别决定。本流程不自动执行这些动作。不能用“测试通过”代替生产验证。
+用审核模板字段在PR记录问题和证据，返工批准后在原分支继续；NEXT_TASK.md只保留当前状态及唯一下一步。新提交不能自动沿用旧测试证据。审核、接受与合并/部署/发布/公开/删除分别决定；关键范围和数据决定也由用户确认，授权范围内可逆的日常实现可自行推进。禁止直接修改main或默认分支。

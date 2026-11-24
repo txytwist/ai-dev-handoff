@@ -18,13 +18,13 @@
 - 本次Codex云端机器中的CLI版本：`0.167.0-alpha.4`。
 - 原生协议：`codex app-server` initialize 后 `skills/list`，参数包含当前仓库cwd与forceReload=true，两个名字均返回enabled=true、scope=repo、各自仓库内SKILL.md路径，errors为空。
 - 实际读取：校验程序读取原生返回路径并核对前言；本轮助手已读取完整Skill正文，再按指令完成下方受控试运行。
-- 指令执行样例：当前助手直接应用文件指令，**不是新增模型会话的原生 `$skill` 路由日志**。不能拿这个样例证明网页自动激活。样例见Handoff。
-- 新项目继承：临时Git新项目运行默认初始化器，无需Skill选项即生成现有AGENTS/PROJECT_CONTEXT模板、交接索引及完整技能包；原生skills/list也在该cwd发现两个repo Skill，AGENTS逐字节保留。重复复制被拒绝，损坏文件校验失败。
+- 指令执行样例：当前助手直接应用文件指令，**不是新增模型会话的原生 `$skill` 路由日志**。不能拿这个样例证明网页自动激活。样例见PR。
+- 新项目继承：临时Git新项目运行默认初始化器，无需Skill选项即生成现有AGENTS/PROJECT_CONTEXT模板、当前状态/下一步及完整技能包；原生skills/list也在该cwd发现两个repo Skill，AGENTS逐字节保留，默认生成NEXT_TASK.md，日常不生成归档文件。重复复制被拒绝，损坏文件校验失败。
 - 未验证：真实Cloud Codex网页选择新仓库后新会话的自动发现/显式路由与跨会话模式持久化；ChatGPT iOS安装；未安装的上游hooks/插件、其他别名。不要把app-server发现当成全部产品表面的执行证明。
 
 ## 新项目默认初始化
 
-用户批准新项目初始化后，默认生成AGENTS.md、PROJECT_CONTEXT.md、docs/handoff/README.md并完整继承 `.agents/skills/`（manifest、两份Skill与许可）。无需另行请求Skill，不Fork框架。每次新会话必须主动读取并执行两份Skill，仅用户明确禁用的Skill跳过；禁用范围/原因与加载失败必须报告。原生调用失败但文件可读时标记按文件执行；文件也不可读时暂停依赖Skill的步骤，不能伪称已执行。
+用户批准新项目初始化后，默认生成AGENTS.md、PROJECT_CONTEXT.md、NEXT_TASK.md并完整继承 `.agents/skills/`（manifest、两份Skill与许可）。无需另行请求Skill，不Fork框架。每次新会话必须主动读取并执行两份Skill，仅用户明确禁用的Skill跳过；禁用范围/原因与加载失败必须报告。原生调用失败但文件可读时标记按文件执行；文件也不可读时暂停依赖Skill的步骤，不能伪称已执行。
 
 框架工作区中，Codex运行（普通手机用户无需终端）：
 

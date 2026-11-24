@@ -18,10 +18,12 @@ with tempfile.TemporaryDirectory() as folder:
     (root / 'fixture.md').write_text('ghp_' + 'A' * 30)
     with (root / 'START_HERE.md').open('a') as handle:
         handle.write('\nFor internal testing\n')
+    next_task = root / 'NEXT_TASK.md'
+    next_task.write_text(next_task.read_text().replace('## 阻塞', '## Removed') + '\n## 下一步唯一任务\nduplicate\n')
     errors, _ = validate(root)
-    for expected in ['missing: SECURITY.md', 'missing: .github/workflows/docs.yml', 'broken/escaping link', 'missing field Evidence', 'possible GitHub token', 'stale private-preview onboarding']:
+    for expected in ['missing: SECURITY.md', 'missing: .github/workflows/docs.yml', 'broken/escaping link', 'missing field Evidence', 'possible GitHub token', 'stale private-preview onboarding', 'NEXT_TASK.md: missing or duplicate field 阻塞', 'NEXT_TASK.md: missing or duplicate field 下一步唯一任务']:
         assert any(expected in error for error in errors), expected
-print('PASS: clean fixture accepted; missing file/workflow, broken link, missing field and synthetic token and stale private onboarding rejected; temporary fixture removed.')
+print('PASS: clean fixture accepted; missing file/workflow, broken link, missing field and synthetic token and stale private onboarding and invalid NEXT_TASK fields rejected; temporary fixture removed.')
 
 from privacy_audit import findings
 assert 'GitHub token' in findings(('ghp_' + 'B' * 30).encode())

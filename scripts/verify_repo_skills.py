@@ -10,7 +10,7 @@ import subprocess
 import sys
 import tempfile
 import time
-from init_repo_skills import ROOT, inherit, initialize
+from init_repo_skills import ROOT, inherit, initialize, NEXT_TASK_TEMPLATE
 
 
 def integrity(root):
@@ -76,6 +76,14 @@ def discover(roots):
 
 def main():
     integrity(ROOT)
+    for guide in ['CHATGPT_SETUP.md', 'docs/portable-starter.md']:
+        body = (ROOT / guide).read_text()
+        for term in ['简体中文', '结论优先', 'Karpathy四原则', 'NEXT_TASK.md', '里程碑', 'caveman', 'ponytail', '一个', '用户', 'PR']:
+            assert term in body, (guide, term)
+    for guide in ['AGENTS.md', 'templates/AGENTS.md', 'CODEX_SETUP.md']:
+        body = (ROOT / guide).read_text()
+        assert '每次交付在 docs/handoff/' not in body
+        assert 'NEXT_TASK.md' in body
     with tempfile.TemporaryDirectory(prefix='handoff-skills-') as folder:
         fresh = Path(folder)
         subprocess.run(['git', 'init', '-q', str(fresh)], check=True)
@@ -88,7 +96,14 @@ def main():
         assert '只有用户明确禁用' in original.decode()
         assert '加载失败' in original.decode()
         assert (fresh / 'PROJECT_CONTEXT.md').exists()
-        assert (fresh / 'docs' / 'handoff' / 'README.md').exists()
+        assert (fresh / 'NEXT_TASK.md').read_text() == NEXT_TASK_TEMPLATE
+        assert not (fresh / 'docs' / 'handoff').exists()
+        for term in ['简体中文', '一个必要', '术语首次', 'Karpathy四原则', '可逆', 'GitHub是项目记录', 'NEXT_TASK.md', '当前 Issue/PR', '禁止直接修改main', '里程碑', '详细需求']:
+            assert term in original.decode(), term
+        assert '每次交付在 docs/handoff/' not in original.decode()
+        for field in ['当前状态', 'PR或分支', '验证结果', '未测项', '下一步唯一任务', '阻塞']:
+            assert NEXT_TASK_TEMPLATE.count('## ' + field + '\n') == 1
+        assert len(NEXT_TASK_TEMPLATE.split('## 下一步唯一任务\n')[1].split('\n\n')[0].splitlines()) == 1
         try:
             initialize(fresh)
         except FileExistsError:
@@ -119,7 +134,9 @@ def main():
             assert not (disabled / '.agents' / 'skills').exists()
             assert '--disable-skills' in (disabled / 'PROJECT_CONTEXT.md').read_text()
             assert (disabled / 'AGENTS.md').read_bytes() == original
-        print('PASS: default new-project skills, full hashes, per-session policy, explicit opt-out record, no-overwrite, preserved guidance, corruption rejection.')
+            assert (disabled / 'NEXT_TASK.md').read_text() == NEXT_TASK_TEMPLATE
+            assert not (disabled / 'docs' / 'handoff').exists()
+        print('PASS: default new-project skills, full hashes, per-session/personal policy, NEXT_TASK-only daily records, explicit opt-out record, no-overwrite, preserved guidance, corruption rejection.')
         if '--host' in sys.argv:
             print(subprocess.check_output(['codex', '--version'], text=True).strip())
             discover([ROOT, fresh])
