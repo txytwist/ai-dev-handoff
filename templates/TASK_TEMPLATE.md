@@ -1,5 +1,7 @@
 # Task / 任务
 
+任务字段模板；优先填写到Issue/PR，不要求日常新建任务文件。Issue不可用时暂存NEXT_TASK.md。
+
 ## Status
 <PLANNED / APPROVED / IN_PROGRESS / REVIEW / CHANGES_REQUESTED / ACCEPTED>
 

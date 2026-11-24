@@ -1,5 +1,7 @@
 # Review / 审核
 
+审核字段模板；日常直接填写到PR，不要求新建审核文件。
+
 ## Status
 <PLANNED / APPROVED / IN_PROGRESS / REVIEW / CHANGES_REQUESTED / ACCEPTED>
 

@@ -21,9 +21,9 @@
 | 1 把引导块发给 ChatGPT，选择新项目、说目标 | ChatGPT复述目标，只问一个必要问题 | 2 |
 | 2 让 ChatGPT 核实建仓、读取、写 Issue、写文件能力及你的授权 | 已知能做什么；权限不能互推 | 3 |
 | 3 建一次独立 Private 仓库 | 有自己的仓库 URL，包含初始 README；ChatGPT/Codex连接能访问它 | 4 |
-| 4 让 ChatGPT 提出最小初始化文件计划，并批准范围 | 仅 AGENTS.md、PROJECT_CONTEXT.md、docs/handoff/README.md；首个小任务及验收已明确 | 5 |
+| 4 让 ChatGPT 提出最小初始化文件计划，并批准范围 | AGENTS.md、PROJECT_CONTEXT.md、NEXT_TASK.md，以及默认的两份Skill与许可；首个小任务及验收已明确 | 5 |
 | 5 ChatGPT优先创建 Issue；无写权限则给完整任务 | 有真实 Issue URL，或可复制的完整批准任务 | 6 |
-| 6 打开 Cloud Codex，选择自己的仓库，粘贴任务并授权执行 | Codex复述正确仓库与任务，保存 docs/tasks/，在功能分支提交初始化文件与小任务的一个 PR、Handoff | 7 |
+| 6 打开 Cloud Codex，选择自己的仓库，粘贴任务并授权执行 | Codex复述正确仓库与任务，更新NEXT_TASK.md，在功能分支提交初始化文件与小任务的一个 PR、Handoff | 7 |
 | 7 主动回 ChatGPT，给 PR、提交与交接 | ChatGPT已读实际 diff/证据，或明确缺失材料；给审核意见 | 8 |
 | 8 决定接受或返工 | 决定已记录；返工经批准再交 Codex，回 7 | 新需求重新规划 |
 
@@ -47,10 +47,14 @@
 
 ## 卡住时
 
-ChatGPT不能写 Issue → 给完整任务，Codex先存 `docs/tasks/` 再实施。Codex不能读 Issue → 你贴全文或版本化任务。ChatGPT不能读 PR → 你提供完整 diff、文件、ref 和日志，只能审核提供的快照。不能推送或建 PR → 报告阻塞，不声称 GitHub 已交付。
+ChatGPT不能写 Issue → 给完整任务，Codex先存NEXT_TASK.md 再实施。Codex不能读 Issue → 你贴全文或版本化任务。ChatGPT不能读 PR → 你提供完整 diff、文件、ref 和日志，只能审核提供的快照。不能推送或建 PR → 报告阻塞，不声称 GitHub 已交付。
 
 ## 设置一次，日常三步
 
 项目建立后，可把引导规则保存到 ChatGPT Project 的项目指令；没有此功能时新对话重贴规则和最新上下文，不承诺自动记忆。权威规范在自己的项目仓库，每次先确认读到正确 ref。
 
 ChatGPT 提想法 → Codex 执行 → ChatGPT 审核。用户主动来回传递；审核不等于合并、部署或公开授权。进一步说明见 [详细初始化规则](CHATGPT_SETUP.md)，但首次引导全文已足够开始，无须跳转所有文档。
+
+## 新项目默认继承两份仓库 Skill
+
+新项目初始化默认包含 `.agents/skills/` 完整固定包（caveman、ponytail、manifest及许可），无需另行勾选。只有用户明确禁用时跳过对应Skill并记录；现有规范/文件仍不得覆盖。每次新Codex会话先按AGENTS主动读取并执行两份Skill，失败必须报告，不冒充已激活。初始化脚本、禁用方式与分级证据见 [Skill说明](docs/cloud-skills.md)。这不是ChatGPT手机安装或新云端会话自动激活已经实测的承诺。

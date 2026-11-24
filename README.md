@@ -36,7 +36,7 @@ Illustrative manual scenario, not a universal claim or measured benefit. Short r
 ### 💻 Cloud Codex
 
 - **Without:** May need requirements re-explained each round.
-- **With:** Reads accessible Issues / `docs/tasks/` and rules; implements, tests, submits PR/handoff.
+- **With:** Reads accessible Issues / `NEXT_TASK.md` and rules; implements, tests, submits PR/handoff.
 
 ### 🔄 Collaboration
 
@@ -59,7 +59,7 @@ Illustrative manual scenario, not a universal claim or measured benefit. Short r
 
 ChatGPT, GitHub and Cloud Codex access depends on your account entitlements and repository permissions. Issue access in Codex must be verified. Chats do not automatically sync or wake each other. The user returns to ChatGPT with the PR and handoff. Review is not permission to merge, deploy, publish, delete data or make a repository public.
 
-Use these templates in **your own project repository**; no fork of this framework is needed. Multiple projects can reuse them independently. When GitHub writes are unavailable, use a copied task saved by Codex in `docs/tasks/` before execution. When reads are unavailable, supply files and diffs; review remains limited to the evidence supplied.
+Use these templates in **your own project repository**; no fork of this framework is needed. Multiple projects can reuse them independently. When GitHub writes are unavailable, use a copied task saved by Codex in `NEXT_TASK.md` before execution. When reads are unavailable, supply files and diffs; review remains limited to the evidence supplied.
 
 ## Validation and contribution
 

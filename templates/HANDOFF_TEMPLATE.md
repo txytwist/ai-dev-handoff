@@ -1,5 +1,7 @@
 # Handoff / 交接
 
+里程碑归档模板；日常交接详情直接留在PR，不逐轮创建归档。
+
 ## Status
 <PLANNED / APPROVED / IN_PROGRESS / REVIEW / CHANGES_REQUESTED / ACCEPTED>
 

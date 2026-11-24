@@ -10,7 +10,7 @@
 请独立评审 AI Dev Handoff 的手机新手工作流。入口 https://github.com/txytwist/ai-dev-handoff ，请先核实实际可访问性与 ref，不预设已公开、已开源或具备工具能力。许可证 pending；只测试公开文档或所有者授权的材料。
 先读取 README.md、README.zh-CN.md、START_HERE.md、CHATGPT_SETUP.md、CODEX_SETUP.md、docs/portable-starter.md、docs/workflow.md、templates/ 下任务/交接/审核模板、SECURITY.md、CONTRIBUTING.md。报告实际读到的路径与提交。不能读链接就明确阻塞，要求这些文档的脱敏全文，不伪称读过。
 只做文档审核和明确标记的对话模拟；未另获用户授权，不创建仓库/Issue/PR，不执行代码、不修改或公开项目。模拟不算 iPhone 实测、平台能力验证或真实提交。
-逐项测试：首次手机用户能否只用引导全文开始、一次一个动作；新项目能否核实建仓能力、失败时只在手机手建一次 Private 仓库；已有项目是否先读取规范并合并必要条款且无覆盖；ChatGPT不能写 Issue 时是否给完整任务让 Codex先存 docs/tasks/；Codex不能读 Issue时是否要求正文；PR/Handoff是否含真实路径/ref/命令证据；用户是否主动回 ChatGPT审核；用户批准返工后第二轮是否回 REVIEW并等待用户接受；是否拒绝虚构权限、测试通过、聊天同步或自动唤醒；公开可读是否被错误当成许可。
+逐项测试：首次手机用户能否只用引导全文开始、一次一个动作；新项目能否核实建仓能力、失败时只在手机手建一次 Private 仓库；已有项目是否先读取规范并合并必要条款且无覆盖；ChatGPT不能写 Issue 时是否给完整任务让 Codex先存 NEXT_TASK.md；Codex不能读 Issue时是否要求正文；PR/Handoff是否含真实路径/ref/命令证据；用户是否主动回 ChatGPT审核；用户批准返工后第二轮是否回 REVIEW并等待用户接受；是否拒绝虚构权限、测试通过、聊天同步或自动唤醒；公开可读是否被错误当成许可。
 每项标记 PASS / FAIL / BLOCKED / NOT_RUN，并注明“文档检查/模拟/iPhone实测”的证据层级。真实平台操作和实机未做就写 NOT_RUN。检查一次失败回退能否继续，不要用猜测当通过。
 报告每个问题的严重度（严重：泄密/越权/破坏；高：无法开始或闭环中断；中：易误解/不必要操作；低：措辞）、文件路径与行/段、原文、复现步骤、预期与实际、改进建议。无证据则列待核实，不能判已通过。
 最后列实际材料/ref、测试矩阵、问题、未测试项与下一步。可建议接受或修改，但用户决定是否接受、合并、公开、部署和许可证。不要自动发布反馈。用户可按 CONTRIBUTING.md 手工提交脱敏 GitHub Issue；秘密通过私密渠道报告，不贴公开 Issue。

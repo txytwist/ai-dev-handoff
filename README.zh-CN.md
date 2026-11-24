@@ -34,7 +34,7 @@ Build software from your phone with ChatGPT, GitHub and Cloud Codex.
 ### 💻 Cloud Codex
 
 - **无统一交接：** 每轮可能需要重新解释需求。
-- **有统一交接：** 读取可访问的 Issue / `docs/tasks/` 与规范，开发、测试、提交 PR/交接。
+- **有统一交接：** 读取可访问的 Issue / `NEXT_TASK.md` 与规范，开发、测试、提交 PR/交接。
 
 ### 🔄 协作
 
@@ -59,7 +59,7 @@ ChatGPT 提想法。Codex 执行。ChatGPT 审核。
 
 ## 权限不足也能交接
 
-- ChatGPT 不能写 Issue：生成完整任务，由你交给 Codex，先保存到项目 `docs/tasks/` 再执行。
+- ChatGPT 不能写 Issue：生成完整任务，由你交给 Codex，先保存到项目 `NEXT_TASK.md` 再执行。
 - Codex 不能读 Issue：你提供任务全文或可读的版本化任务文件；先确认读到了正确任务。
 - ChatGPT 不能读取 PR：提供文件、完整 diff、提交标识和测试输出。它只能审核提供的材料，应写明未核实部分，不能声称已读远端 PR。
 - Codex 无法推送或创建 PR：保留提交和交接记录，明确阻塞；你在手机 GitHub 网页从功能分支创建 PR。未推送时不能声称 GitHub 已有代码。
