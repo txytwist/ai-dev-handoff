@@ -19,4 +19,4 @@ REVIEW
 见 [交接](../handoff/cloud-skills.md)。
 
 ## Next action
-完成后 REVIEW，等待ChatGPT审核。
+PR https://github.com/txytwist/ai-dev-handoff/pull/15 ，状态 REVIEW，等待ChatGPT审核。
