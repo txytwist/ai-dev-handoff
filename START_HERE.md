@@ -54,3 +54,7 @@ ChatGPT不能写 Issue → 给完整任务，Codex先存 `docs/tasks/` 再实施
 项目建立后，可把引导规则保存到 ChatGPT Project 的项目指令；没有此功能时新对话重贴规则和最新上下文，不承诺自动记忆。权威规范在自己的项目仓库，每次先确认读到正确 ref。
 
 ChatGPT 提想法 → Codex 执行 → ChatGPT 审核。用户主动来回传递；审核不等于合并、部署或公开授权。进一步说明见 [详细初始化规则](CHATGPT_SETUP.md)，但首次引导全文已足够开始，无须跳转所有文档。
+
+## 可选：仓库级 Skill 云端实验
+
+不影响基础流程；本次仅兼容性验证。新项目初始化任务若明确要求继承 caveman/ponytail，由Codex在获准项目功能分支完整复制固定版本技能与许可，不能覆盖已有规则；操作和已验证边界见 [Skill验证](docs/cloud-skills.md)。框架公开不代表所有Cloud Codex会话自动加载它们，也不代表ChatGPT手机可安装任意Skill。

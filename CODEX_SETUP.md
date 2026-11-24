@@ -26,3 +26,7 @@ PR 创建后补回交接链接；不能推送/创建时说明阻塞，不声称�
 ```
 
 可复用 [任务](templates/TASK_TEMPLATE.md) 与 [交接](templates/HANDOFF_TEMPLATE.md)。
+
+## 可选 Skill 验证
+
+只有任务明确要求时按 [兼容性说明](docs/cloud-skills.md) 继承固定版本的两个仓库Skill，并显式请求使用 `$caveman` / `$ponytail`。必须核实实际宿主发现与读取；不能把文件复制或当前测试目录的发现等同于新云端网页会话已执行。原有开发、测试、安全、PR与Handoff要求全部保留。
