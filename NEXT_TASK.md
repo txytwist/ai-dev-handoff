@@ -1,20 +1,19 @@
 # NEXT_TASK
 
 ## 当前状态
-REVIEW；PR #15 已整合默认Skill继承和本轮开发规范。原有历史任务/交接文件保留，不新增逐轮归档。
+IN_PROGRESS；已核验 main@afb5ac5（PR #15 已合并）并收敛滞后状态，Issue #16（Gemini 与 Antigravity 跨平台协作兼容规范）已在独立分支完成本地提交与全部离线校验，因当前会话未挂载仓库推送权限而阻塞推送与建 PR。
 
 ## PR或分支
-https://github.com/txytwist/ai-dev-handoff/pull/15
-分支：feat/cloud-skill-compatibility；本轮基线：0b0441f。详细改动、用户授权与检查证据见PR。
+分支：feat/gemini-antigravity-compat（本地已提交，远端尚未推送）；基线：main@afb5ac592d6590feee1981889765f1198214d500；关联任务：https://github.com/txytwist/ai-dev-handoff/issues/16 。
 
 ## 验证结果
-本轮静态检查通过：42必需文件、46 Markdown、96本地链接；NEXT_TASK缺失/重复字段反例、默认初始化及禁用/覆盖保护、原生skills/list检查均通过。完整命令与输出在PR；新会话自动激活不能由发现结果推断。
+离线标准库检查全部通过：validate.py（42 必需文件、46 Markdown、96 本地链接及敏感模式扫描）、test_validate.py、verify_repo_skills.py（含跨平台与 MCP 降级断言）、privacy_audit.py 与 git diff --check。
 
 ## 未测项
-真实Cloud Codex网页新会话原生路由/自动激活、跨会话模式持久化、真实手机实测仍未验证。
+远端 GitHub Actions（documentation）、真实 Cloud Codex / Gemini / Antigravity 新会话自动激活与真实 iPhone 实测未验证；当前 Antigravity 宿主未安装 codex CLI，未运行 verify_repo_skills.py --host。
 
 ## 下一步唯一任务
-ChatGPT审核PR #15最新diff与测试证据，给出接受或修改意见。
+请将 `txytwist/ai-dev-handoff` 添加到当前 Antigravity 项目资源（Project Resources）后发送任意消息，继续推送 `feat/gemini-antigravity-compat` 并创建 PR。
 
 ## 阻塞
-无开发阻塞；新会话自动激活尚无实测证据。未获合并、部署、发布、公开、删除或许可变更授权。
+`git push -u origin feat/gemini-antigravity-compat` 返回 HTTP 403（当前 Antigravity 会话未将 `txytwist/ai-dev-handoff` 挂载到项目资源，凭证仅限只读）；禁止自行合并。
