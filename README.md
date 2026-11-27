@@ -57,7 +57,7 @@ Illustrative manual scenario, not a universal claim or measured benefit. Short r
 
 ## Limits and decisions
 
-ChatGPT/Gemini, GitHub and Cloud Codex/Antigravity access depends on your account entitlements and repository permissions. Issue access in the executor must be verified. Chats do not automatically sync or wake each other. The user returns to ChatGPT or Gemini with the PR and handoff. Review is not permission to merge, deploy, publish, delete data or make a repository public.
+ChatGPT/Gemini, GitHub and Cloud Codex/Antigravity access depends on your account entitlements and repository permissions (in Antigravity, start development sessions from a Project bound to the target GitHub repository; if an unbound session hits `HTTP 403` on push, recover commits via `git format-patch` + Google Drive + `git am` in a bound Project session). Issue access in the executor must be verified. Chats do not automatically sync or wake each other. The user returns to ChatGPT or Gemini with the PR and handoff. Review is not permission to merge, deploy, publish, delete data or make a repository public.
 
 Use these templates in **your own project repository**; no fork of this framework is needed. Multiple projects can reuse them independently. When GitHub writes are unavailable, use a copied task saved by Codex or Antigravity in `NEXT_TASK.md` before execution. When direct single-file MCP reads fail, fall back to full commit/PR diffs or user-supplied files; review remains limited to the evidence verified.
 

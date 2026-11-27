@@ -82,6 +82,8 @@ GitHub是项目记录的准绳。接手先读AGENTS.md、NEXT_TASK.md（如存�
 
 规划端不能写Issue或执行端不能读Issue时，用户提供完整任务；执行前保存在NEXT_TASK.md，再在PR补全详情，不能因减少文件丢失验收/批准证据。已有docs/tasks/仍可读取。无法推送时如实记录阻塞，不声称GitHub已有结果。
 
+**Antigravity Project 绑定要求与 HTTP 403 补丁恢复闭环**：使用 Antigravity 作为执行端时，必须优先从已绑定目标 GitHub 仓库（Project Resources）的 **Project** 内发起开发会话，容器才会挂载该仓库的分支推送与建 PR 权限。若误在未挂载目标仓库的普通会话中完成开发、遇到 `git push` 返回 `HTTP 403` 时，无需重做开发，走已验证的无损恢复路径：1）在原会话保持独立分支本地提交完整，运行 `git format-patch` 导出补丁并计算 `sha256sum`，通过已授权的 Google Drive 工具上传补丁；2）在绑定了目标 GitHub 仓库的 Antigravity Project 会话中连接 Google Drive，下载补丁并校验 `sha256sum` 一致后，基于最新 `origin/main` 创建功能分支并用 `git am` 无冲突恢复原提交；3）更新 `NEXT_TASK.md` 为 `REVIEW`、重跑全套校验与隐私检查后推送分支并创建 PR。
+
 ## 审核实际变更
 
 用户主动返回规划/审核端（ChatGPT 或 Gemini）提供一个PR链接。审核端读取实际diff（含通过 `pull_request_read(method="get_diff")` 获取完整补丁）、批准范围及命令结果，逐条核验验收，区分建议与用户接受。无读取权限或遇到历史上下文缺失时，要求最少必要的完整快照并说明未核实部分，不能虚构通过。

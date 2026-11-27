@@ -62,7 +62,7 @@ ChatGPT / Gemini 提想法。Codex / Antigravity 执行。ChatGPT / Gemini 审�
 - 规划端不能写 Issue：生成完整任务，由你交给执行端，先保存到项目 `NEXT_TASK.md` 再执行。
 - 执行端不能读 Issue：你提供任务全文或可读的版本化任务文件；先确认读到了正确任务。
 - GitHub MCP 单文件直读无正文：先列举目录并用 `get_commit(detail="full_patch")` 或 `pull_request_read(method="get_diff")` 还原近期全文；历史文件局部 diff 无法 100% 还原或完全不能读取时，由你提供文件、完整 diff 和日志，明确未核实部分，绝不伪称已读远端全文。
-- 执行端无法推送或创建 PR：保留提交和交接记录，明确阻塞；你在手机 GitHub 网页从功能分支创建 PR。未推送时不能声称 GitHub 已有代码。
+- 执行端无法推送或创建 PR：Antigravity 必须优先从绑定目标 GitHub 仓库的 Project 发起会话；若普通会话推送遇 HTTP 403，保留本地提交并记录阻塞，可通过 `git format-patch` + Google Drive 在绑定仓库的 Project 会话用 `git am` 无损恢复并建 PR（或已推送分支后在手机 GitHub 网页创建 PR）。未推送时不能声称 GitHub 已有代码。
 
 ## 继续阅读
 
