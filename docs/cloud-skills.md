@@ -16,17 +16,18 @@
 ## 当前环境验证分级
 
 - 本次Codex云端机器中的CLI版本：`0.167.0-alpha.4`。
-- 原生协议：`codex app-server` initialize 后 `skills/list`，参数包含当前仓库cwd与forceReload=true，两个名字均返回enabled=true、scope=repo、各自仓库内SKILL.md路径，errors为空。
-- 实际读取：校验程序读取原生返回路径并核对前言；本轮助手已读取完整Skill正文，再按指令完成下方受控试运行。
-- 指令执行样例：当前助手直接应用文件指令，**不是新增模型会话的原生 `$skill` 路由日志**。不能拿这个样例证明网页自动激活。样例见PR。
+- 原生协议（Codex CLI）：`codex app-server` initialize 后 `skills/list`，参数包含当前仓库cwd与forceReload=true，两个名字均返回enabled=true、scope=repo、各自仓库内SKILL.md路径，errors为空。
+- 宿主发现机制区分（Codex `skills/list` vs Antigravity 自身机制 vs 纯对话端）：必须严格区分 Codex CLI 的 `app-server` `skills/list` 接口与 Antigravity 自身的原生 Skill 发现/加载机制（如 `list_skills` / `lookup_skills`）。缺少 `codex` CLI 仅代表未运行 Codex `skills/list` 协议探测，**不得因此断言 Antigravity 不支持原生 Skill**；反之，Antigravity 宿主注册表发现的同名 Skill 也不得混写为 Codex `skills/list` 返回结果，仍需核对并读取项目仓库 `.agents/skills/*/SKILL.md` 正文。对无宿主 Skill 发现机制的纯对话规划端（如 Gemini），在读取两份 `SKILL.md` 全文后仅能标明“按文件指令执行”，严禁冒充原生发现或自动激活；若遇到 GitHub Remote MCP `get_file_contents` 单文件不返回正文且无法通过近期完整 diff 100% 还原 `SKILL.md` 时，必须如实报告读取阻塞并请用户提供全文，不得静默跳过或伪称已加载。
+- 实际读取：校验程序读取原生返回路径并核对前言；本轮助手已读取完整Skill正文，再按指令完成受控执行。
+- 指令执行样例：助手直接应用文件指令，**不是新增模型会话的原生 `$skill` 路由日志**。不能拿这个样例证明网页或新会话自动激活。样例见PR。
 - 新项目继承：临时Git新项目运行默认初始化器，无需Skill选项即生成现有AGENTS/PROJECT_CONTEXT模板、当前状态/下一步及完整技能包；原生skills/list也在该cwd发现两个repo Skill，AGENTS逐字节保留，默认生成NEXT_TASK.md，日常不生成归档文件。重复复制被拒绝，损坏文件校验失败。
-- 未验证：真实Cloud Codex网页选择新仓库后新会话的自动发现/显式路由与跨会话模式持久化；ChatGPT iOS安装；未安装的上游hooks/插件、其他别名。不要把app-server发现当成全部产品表面的执行证明。
+- 未验证：真实Cloud Codex网页、Gemini 或 Antigravity 新会话的自动激活与跨会话模式持久化；ChatGPT / Gemini 手机端安装；未安装的上游hooks/插件、其他别名。不要把app-server发现或单轮文件读取当成全部产品表面的自动激活证明。
 
 ## 新项目默认初始化
 
-用户批准新项目初始化后，默认生成AGENTS.md、PROJECT_CONTEXT.md、NEXT_TASK.md并完整继承 `.agents/skills/`（manifest、两份Skill与许可）。无需另行请求Skill，不Fork框架。每次新会话必须主动读取并执行两份Skill，仅用户明确禁用的Skill跳过；禁用范围/原因与加载失败必须报告。原生调用失败但文件可读时标记按文件执行；文件也不可读时暂停依赖Skill的步骤，不能伪称已执行。
+用户批准新项目初始化后，默认生成AGENTS.md、PROJECT_CONTEXT.md、NEXT_TASK.md并完整继承 `.agents/skills/`（manifest、两份Skill与许可）。无需另行请求Skill，不Fork框架。每次新会话必须主动读取并执行两份Skill，仅用户明确禁用的Skill跳过；禁用范围/原因与加载失败必须报告。原生调用失败或无宿主发现机制但文件可读时，明确标记“按文件指令执行”；文件也不可读时暂停依赖Skill的步骤，不能伪称已执行。
 
-框架工作区中，Codex运行（普通手机用户无需终端）：
+框架工作区中，执行端（Cloud Codex 或 Antigravity）运行（普通手机用户无需终端）：
 
 ```sh
 python3 scripts/init_repo_skills.py <approved-new-project-root>
@@ -49,10 +50,13 @@ python3 scripts/verify_repo_skills.py
 python3 scripts/verify_repo_skills.py --host
 ```
 
-第一条离线标准库检查完整性、继承、保护规则和损坏样例，可在GitHub Actions跑。第二条需本机Codex CLI，额外实际调用原生发现接口；无CLI或协议错误应报告阻塞，不当作通过。脚本不会调用模型或运行上游安装器。
+第一条离线标准库检查完整性、继承、保护规则和损坏样例，可在GitHub Actions或任意具备 Python 3 的执行环境（如 Cloud Codex、Antigravity）运行。第二条需本机安装 `codex` CLI，专用于调用 Codex `app-server` `skills/list` 协议接口；在未安装 `codex` CLI 的宿主（如 Antigravity）中应如实记录“未安装 `codex` CLI，未运行 `--host` 专有探测”，**不得据此推断宿主自身不支持原生 Skill**；发生协议错误时报告阻塞，不当作通过。脚本不会调用模型或运行上游安装器。
 
-## 新会话执行要求与证据边界
+## 新会话执行要求与四级证据边界
 
-AGENTS模板已经要求每次新会话主动加载并执行，不需要用户再次说“使用Skill”。这是应遵守的规则，不是产品自动激活已验证的结论。新会话需回报读取路径、禁用决定、失败原因与实际执行证据；交接分别列出原生发现、读取、实际执行和自动激活。
+AGENTS模板已经要求每次新会话主动加载并执行，不需要用户再次说“使用Skill”。这是应遵守的规则，不是产品自动激活已验证的结论。新会话需回报读取路径、禁用决定、失败原因与实际执行证据；每次交接必须严格按以下四级分开记录，不得混用：
 
-本轮程序已验证默认初始化产物、禁用记录与原生发现；当前助手读取全文后按文件指令执行。真实Cloud Codex网页新会话自动激活、原生模型路由及跨会话持久化仍未验证，不能以AGENTS文字或app-server发现结果冒充通过。
+1. **原生发现**：区分记录 Codex `skills/list` 接口结果与宿主自身 Skill 发现机制（如 Antigravity `list_skills` / `lookup_skills`）结果；未安装 `codex` CLI 时写明未运行 Codex `skills/list`，不得写成宿主不支持原生 Skill；仅确无发现机制的环境（如纯对话端 Gemini）写不支持原生发现。
+2. **正文读取**：实际读取 `.agents/skills/caveman/SKILL.md` 与 `.agents/skills/ponytail/SKILL.md` 全文的路径与方式（本地文件、完整 diff 还原或用户粘贴）；未读到全文写阻塞。
+3. **按文件指令执行**：本轮实际遵循的具体规则证据（如结论优先/精简回复、最小完整改动、末尾列出跳过项与风险，且持久文档保持完整清晰）。
+4. **新会话自动激活**：未经跨会话独立实测一律写“未验证”，不能用前三级结果或 AGENTS 条文冒充“自动激活已实测”。

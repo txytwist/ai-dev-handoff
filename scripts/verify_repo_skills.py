@@ -78,12 +78,13 @@ def main():
     integrity(ROOT)
     for guide in ['CHATGPT_SETUP.md', 'docs/portable-starter.md']:
         body = (ROOT / guide).read_text()
-        for term in ['简体中文', '结论优先', 'Karpathy四原则', 'NEXT_TASK.md', '里程碑', 'caveman', 'ponytail', '一个', '用户', 'PR']:
+        for term in ['简体中文', '结论优先', 'Karpathy四原则', 'NEXT_TASK.md', '里程碑', 'caveman', 'ponytail', '一个', '用户', 'PR', 'Gemini', 'Antigravity', 'get_commit', 'pull_request_read', 'Project', 'Google Drive', 'git am']:
             assert term in body, (guide, term)
-    for guide in ['AGENTS.md', 'templates/AGENTS.md', 'CODEX_SETUP.md']:
+    for guide in ['AGENTS.md', 'templates/AGENTS.md', 'CODEX_SETUP.md', 'docs/workflow.md', 'docs/cloud-skills.md']:
         body = (ROOT / guide).read_text()
         assert '每次交付在 docs/handoff/' not in body
-        assert 'NEXT_TASK.md' in body
+        for term in ['NEXT_TASK.md', 'Gemini', 'Antigravity']:
+            assert term in body, (guide, term)
     with tempfile.TemporaryDirectory(prefix='handoff-skills-') as folder:
         fresh = Path(folder)
         subprocess.run(['git', 'init', '-q', str(fresh)], check=True)
@@ -98,7 +99,7 @@ def main():
         assert (fresh / 'PROJECT_CONTEXT.md').exists()
         assert (fresh / 'NEXT_TASK.md').read_text() == NEXT_TASK_TEMPLATE
         assert not (fresh / 'docs' / 'handoff').exists()
-        for term in ['简体中文', '一个必要', '术语首次', 'Karpathy四原则', '可逆', 'GitHub是项目记录', 'NEXT_TASK.md', '当前 Issue/PR', '禁止直接修改main', '里程碑', '详细需求']:
+        for term in ['简体中文', '一个必要', '术语首次', 'Karpathy四原则', '可逆', 'GitHub是项目记录', 'NEXT_TASK.md', '当前 Issue/PR', '禁止直接修改main', '里程碑', '详细需求', 'Gemini', 'Antigravity', 'get_commit', 'pull_request_read', '按文件指令执行', '交叉核验', 'Project', 'Google Drive', 'git am', '严格区分']:
             assert term in original.decode(), term
         assert '每次交付在 docs/handoff/' not in original.decode()
         for field in ['当前状态', 'PR或分支', '验证结果', '未测项', '下一步唯一任务', '阻塞']:
